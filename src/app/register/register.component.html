@@ -1,0 +1,108 @@
+<div>
+
+  <app-header-bar></app-header-bar>
+
+  <div>
+    <form [formGroup]="creatUserForm"  accept-charset="utf-8" enctype="multipart/form-data"
+      style="text-align: center;
+      margin-top: 28px;">
+
+        <div class='aligned_form form-group'>
+
+            <label for="userName">User Name </label>
+            <input class="form-control" formControlName="userName"  placeholder="Enter Name">
+
+            <label for="userPassword">Password</label>
+            <input class="form-control" formControlName="userPassword"  placeholder="Enter Password">
+
+            <label for="userEmailId">Email ID </label>
+            <input class="form-control" formControlName="userEmailId"  placeholder="Enter Email ID">
+
+            <label for="generalNo">General No </label>
+            <input class="form-control" formControlName="generalNo"  placeholder="Enter General No">
+
+            <label for="userRank">Rank</label>
+            <input class="form-control" formControlName="userRank"  placeholder="Enter Rank">
+
+            <div style="display: flex;
+            flex-flow: row;
+            align-content: flex-start;">
+              <label for="stationName" style="margin-left: 5px;">Station Name </label>
+              <select formControlName="stationName" class="form-control"
+              style="width: 45%;
+              padding-left: 43px;
+              margin-left: 32px;"
+              (change)="filterStationNames($event)">
+                <!-- <option value="0">All</option> -->
+                <option *ngFor="let name of stationNames"
+                [value] = name.stationId
+                >{{name.stationName}}</option>
+              </select>
+
+            </div>
+
+            <div style="display: flex;
+            flex-flow: row;
+            align-content: flex-start;">
+              <label for="permission" style="margin-left: 5px;">Access Permission </label>
+              <select formControlName="permission" class="form-control"
+              style="width: 45%;
+              padding-left: 43px;
+              margin-left: 32px;">
+                <option>Select</option>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+                  <!-- <option *ngFor="let web of websiteList">{{web}}</option> -->
+              </select>
+
+            </div>
+
+            <div style="display: flex;
+            flex-flow: row;
+            align-content: flex-start;">
+              <label for="selectedRole" style="margin-left: 5px;">Role</label>
+              <select formControlName="selectedRole" class="form-control"
+              style="width: 45%;
+              padding-left: 43px;
+              margin-left: 32px;">
+                <option>Select Value</option>
+                <option *ngFor="let role of roles"
+                [value] = "role.id"
+                >{{role.name}}</option>
+              </select>
+            </div>
+
+            <div style="display: flex;
+            flex-flow: row;
+            align-content: flex-start;">
+              <label for="screenName" style="margin-left: 5px;">Screen Name</label>
+              <select formControlName="screenName" class="form-control"
+              style="width: 45%;
+              padding-left: 43px;
+              margin-left: 32px;"
+              (change)="filterScreenNames($event)"
+              multiple="multiple">
+                <option value="0">All</option>
+                <option *ngFor="let web of screenNames"
+                [value] = "web.id"
+                >{{web.name}}</option>
+              </select>
+
+            </div>
+
+            <div>
+              <button style="margin-top: 20px;
+              float: left;" role="button" class="button-name"
+              (click)="createUser();">
+              Create User</button>
+            </div>
+
+          </div>
+
+    </form>
+
+    <div class="alert alert-success" *ngIf="isSuccessful">
+      Your registration is successful!
+    </div>
+  </div>
+</div>

@@ -1,0 +1,177 @@
+
+<div id="cdr-data">
+
+  <div class="nav-alignment">
+    <app-nav-bar></app-nav-bar>
+  </div>
+
+  <div class="cdr-data-body">
+
+    <div class="box" style="margin-top: 15px;">
+      <div style="float: left; width: 50%;">
+          <button style="margin:3px" role="button" class="button-name"
+          [disabled]="newDataButton"
+          (click)="addCdrDetails()">New Data</button>
+      </div>
+      <div style="float: right; width: 50%;">
+          <button style="margin:3px" role="button" class="button-name"
+          [disabled]="updateDataButton"
+          (click)="updateCdrSearchValue()">Modify</button>
+          <button style="margin:3px" role="button" class="button-name"
+          [disabled]="bulkDataButton"
+          (click)="bulkUploadOfCdrData()">Bulk Upload</button>
+          <!-- <button style="margin:3px" role="button" class="button-name">Search</button> -->
+      </div>
+    </div>
+
+
+    <div style="margin-top: 20px;">
+
+        <form [formGroup]="cdrDataForm"  accept-charset="utf-8" enctype="multipart/form-data">
+
+            <div class='aligned_form form-group'>
+
+                <label for="uploadFile">Upload </label>
+                <!-- <input class="form-control" formControlName="uploadFile" type="file" name="uploadFile"> -->
+                <input class="form-control" formControlName="uploadFile" type="file" name="uploadFile"
+                 (change)="onChangeFileBulkUpload($event)">
+
+                <div class="dropdown-search-btn">
+                  <!-- <select formControlName="selectValue" class="form-control" style="margin-right: 5px;">
+                    <option>Dropdown List</option>
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                    <option>Option 3</option>
+
+                  </select> -->
+                  <!-- <div *ngIf="f.website.touched && f.website.invalid" class="alert alert-danger">
+                      <div *ngIf="f.website.errors.required">Name is required.</div>
+                  </div> -->
+                  <!-- <input class="form-control" formControlName="searchValue"
+                    placeholder="Enter Search Field" style="margin-right: 5px; width: 39%;">
+                  <button style="margin:3px" role="button" class="button-name" style="margin-right: 5px;"
+                  (click)="seachValueToCdrDataForm();">
+                  Search</button> -->
+
+                </div>
+
+
+
+              <div style="margin-top: 10px;">
+
+                <label for="uploadFile">Crime No </label>
+                <input class="form-control" formControlName="crimeNo"  placeholder="Enter Crime No">
+
+                <label for="uploadFile">A Party </label>
+                <input class="form-control" formControlName="partyA"  placeholder="Enter A Paty">
+
+                <label for="uploadFile">B Party </label>
+                <input class="form-control" formControlName="partyB"  placeholder="Enter B Party">
+
+                <label for="dateTime">Date & Time </label>
+                <input type="datetime-local" class="form-control" formControlName="dateTime"  value="dateTime">
+
+                <label for="uploadFile">Duration </label>
+                <input class="form-control" formControlName="duration"  placeholder="Enter Duration">
+
+                <label for="cellType">Call Type </label>
+                <input class="form-control" formControlName="cellType"  placeholder="Enter Type Of Call">
+
+                <label for="firstCellId">First Cell ID</label>
+                <input class="form-control" formControlName="firstCellId"  placeholder="Enter First Cell ID">
+
+                <label for="lastCellId">Last Cell ID</label>
+                <input class="form-control" formControlName="lastCellId"  placeholder="Enter Last Cell ID">
+
+                <label for="imeiA">IMEI A</label>
+                <input class="form-control" formControlName="imeiA"  placeholder="Enter IMEI A">
+
+                <label for="imsiA">IMSI A</label>
+                <input class="form-control" formControlName="imsiA"  placeholder="Enter IMSI A">
+
+                <label for="cellIdAddress">First Cell ID Address</label>
+                <input class="form-control" formControlName="cellIdAddress"  placeholder="Enter Cell ID Address">
+
+                <label for="latitude">Latitude</label>
+                <input class="form-control" formControlName="latitude"  placeholder="Enter Latitude">
+
+                <label for="longitude">Longitude</label>
+                <input class="form-control" formControlName="longitude"  placeholder="Enter Longitude">
+
+                <div style="display: flex;
+                flex-flow: row;
+                align-content: flex-start;">
+                  <label for="policeStation">Station Name </label>
+                  <select formControlName="policeStation" class="form-control"
+                  style="width: 45%;
+                  padding-left: 43px;
+                  margin-left: 32px;">
+                    <option *ngFor="let name of stationNames"
+                    [value] = name.stationId
+                    >{{name.stationName}}</option>
+                  </select>
+
+                </div>
+
+                <div>
+                  <button style="margin-top: 20px;
+                  float: left;" role="button" class="button-name"
+                  (click)="submitCdrData();">
+                  Submit</button>
+                </div>
+
+              </div>
+
+
+            </div>
+        </form>
+
+        <!-- <div class="card-container">
+
+          <table id="cdr-dataTable"
+          class="table table-striped table-bordered table-sm row-border hover">
+            <thead>
+                <tr>
+                    <th>Crime No</th>
+                    <th>A Party</th>
+                    <th>B Party</th>
+                    <th>Date & Time</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let val of crimeData">
+                    <td>{{ val.crimeNo }}</td>
+                    <td>{{ val.aParty }}</td>
+                    <td>{{ val.bParty }}</td>
+                    <td>{{ val.dateTime }}</td>
+                </tr>
+            </tbody>
+          </table>
+
+        </div>
+
+        <div class="box" style="display: flex;
+        width: 50%;
+        margin-left: auto;
+        margin-right: 0;">
+
+          <button style="margin:3px" role="button" class="button-name">Export Excel</button>
+          <button style="margin:3px" role="button" class="button-name">Export PDF</button>
+
+      </div> -->
+
+
+
+
+
+
+    </div>
+
+
+  </div>
+
+
+
+
+</div>

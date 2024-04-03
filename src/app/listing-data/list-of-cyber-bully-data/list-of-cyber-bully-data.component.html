@@ -1,0 +1,48 @@
+<div id="list-cyber-bully-data">
+
+  <div class="nav-alignment">
+    <app-nav-bar></app-nav-bar>
+  </div>
+
+  <div class="card m-3">
+
+    <div class="card-container card-body">
+      <h1 class="mb-5">List Of Cyber Bully Data</h1>
+
+      <table id="cdrDataTable" datatable [dtOptions]="dtOptions"
+      class="row-border hover table table-striped table-sm">
+          <thead>
+              <tr>
+                  <th>Mobile No</th>
+                  <th>Full Name</th>
+                  <th>Son/Daughter Of</th>
+                  <th>Aadhar No</th>
+                  <th>Pan Card No</th>
+                  <th>Vehicle Details</th>
+
+              </tr>
+          </thead>
+
+          <tbody>
+              <tr *ngFor="let val of items">
+                  <td (click)="redirectToCyberBullyData(val.mobile_no)">{{ val.mobile_no }}</td>
+
+                  <td>{{ val.full_name }}</td>
+
+                  <td>{{ val.son_daughter_of }}</td>
+
+                  <td>{{ val.aadhar_no }}</td>
+
+                  <td>{{ val.pan_card_no }}</td>
+
+                  <td>{{ val.vehicle_details }}</td>
+              </tr>
+          </tbody>
+      </table>
+    </div>
+
+  </div>
+
+
+
+</div>

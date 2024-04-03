@@ -1,0 +1,15 @@
+.navbar-brand{
+  background: url(../../../assets/imgs/appolice.png) no-repeat 6px center;
+  width: 150px;
+  height: 65px;
+  display: block;
+}
+
+
+.navbar-main-image{
+  background: url(../../../assets/imgs/master_photo.png) no-repeat 6px center;
+  width: 150px;
+  height: 65px;
+  display: block;
+}
+

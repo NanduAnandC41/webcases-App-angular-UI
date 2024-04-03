@@ -1,0 +1,186 @@
+<div id="cyber-bully-data">
+
+  <div class="nav-alignment">
+    <app-nav-bar></app-nav-bar>
+  </div>
+
+
+  <div class="cyber-bully-data-body">
+
+
+    <div class="box" style="margin: 5px;">
+      <div style="float: left; width: 50%;">
+          <button style="margin:3px" role="button" class="button-name"
+          [disabled]="newDataButton"
+          (click)="addCyberBullyDetails()">New Data</button>
+      </div>
+      <div style="float: right; width: 50%;">
+          <button style="margin:3px" role="button" class="button-name"
+          [disabled]="updateDataButton"
+          (click)="updateCyberBullySearchValue()">Modify</button>
+          <button style="margin:3px" role="button" class="button-name"
+          [disabled]="bulkDataButton"
+          (click)="bulkUploadOfCyberBully()">Bulk Upload</button>
+          <!-- <button style="margin:3px" role="button" class="button-name">Search</button> -->
+      </div>
+    </div>
+
+    <!-- <div class="box" style="margin: 5px;">
+      <div style="float: left; width: 50%;">
+        <input class="form-control" [(ngModel)]="searchValue"  placeholder="Enter Search Value">
+      </div>
+      <div style="float: right; width: 50%;">
+          <button style="margin-left: 10px;" role="button" class="button-name"
+          (click)="cyberBullySearchValue()">Search</button>
+      </div>
+    </div> -->
+
+
+    <div style="margin-top: 20px;">
+        <form [formGroup]="cyberBullyForm"  accept-charset="utf-8" enctype="multipart/form-data">
+
+            <div class='aligned_form form-group'>
+
+              <label for="uploadFile">Upload </label>
+              <!-- <input class="form-control" formControlName="uploadFile" type="file" name="uploadFile"> -->
+              <input class="form-control" formControlName="uploadFile" type="file" name="uploadFile"
+               (change)="onChangeFileBulkUpload($event)">
+
+              <div class="dropdown-search-btn">
+                <!-- <select formControlName="selectValue" class="form-control" style="margin-right: 5px;">
+                  <option>Dropdown List</option>
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                  <option>Option 3</option>
+
+                </select> -->
+                <!-- <div *ngIf="f.website.touched && f.website.invalid" class="alert alert-danger">
+                    <div *ngIf="f.website.errors.required">Name is required.</div>
+                </div> -->
+                <input class="form-control" formControlName="searchValue"
+                  placeholder="Enter Search Field" style="margin-right: 5px; width: 39%; margin-top: 10px;">
+                <button style="margin:3px" role="button" class="button-name" style="margin-right: 5px;"
+                (click)="seachValueToCyberBullyForm();">
+                Search</button>
+
+              </div>
+
+              <div style="margin-top: 10px;">
+
+                <label for="fullName">Full Name </label>
+                <input class="form-control" formControlName="fullName"  placeholder="Enter fullName">
+
+                <label for="sonDaughterWifeOf">Son / Daughter / Wife Of </label>
+                <input class="form-control" formControlName="sonDaughterWifeOf"  placeholder="Enter Name">
+
+                <label for="dateOfBirth">Date OF Birth </label>
+                <input type="date" class="form-control" formControlName="dateOfBirth"  value="currentDate">
+                <!-- <input class="form-control" formControlName="dateOfBirth"  placeholder="Enter DOB"> -->
+
+                <label for="fullAddress">Full Address </label>
+                <input class="form-control" formControlName="fullAddress"  placeholder="Enter Address">
+
+                <label for="aadharNo">Aadhar No.</label>
+                <input class="form-control" formControlName="aadharNo"  placeholder="Enter Aadhar No">
+
+                <label for="mobileNo">Mobile No.</label>
+                <input class="form-control" formControlName="mobileNo"  placeholder="Enter Mobile No">
+
+                <label for="emaiIdOfficial">Email ID (Official)</label>
+                <input class="form-control" formControlName="emailIdOfficial"  placeholder="Enter Email ID">
+
+                <label for="emaiIdPersonal">Email ID (Personal)</label>
+                <input class="form-control" formControlName="emailIdPersonal"   placeholder="Enter Email ID">
+
+                <label for="professionJob">Profession (Job)</label>
+                <input class="form-control" formControlName="professionJob"  placeholder="Enter Job Designation">
+
+                <label for="prevJobDetails">Previous Job Details</label>
+                <input class="form-control" formControlName="prevJobDetails"  placeholder="Enter Previous Job Info">
+
+                <label for="monthlyIncome">Monthly Income</label>
+                <input class="form-control" formControlName="monthlyIncome"  placeholder="Enter Monthly Salary">
+
+                <label for="vehicleDetails">Vehicle Details</label>
+                <input class="form-control" formControlName="vehicleDetails"  placeholder="Enter Vehicle Details">
+
+                <label for="bankAccountDetails">Bank Account Details</label>
+                <input class="form-control" formControlName="bankAccountDetails"  placeholder="Enter Bank Acc Details">
+
+                <label for="panCardNo">PAN No.</label>
+                <input class="form-control" formControlName="panCardNo"  placeholder="Enter PAN No">
+
+                <label for="drivingLicenseNo">Driving License No.</label>
+                <input class="form-control" formControlName="drivingLicenseNo"  placeholder="Enter Driving License No">
+
+                <label for="passPortDetails">Passport Details</label>
+                <input class="form-control" formControlName="passPortDetails"  placeholder="Enter Passport Details">
+
+                <label for="friendDetails">Dearest Friend Details</label>
+                <input class="form-control" formControlName="friendDetails"  placeholder="Enter Friend Details">
+
+                <label for="facebookDetails">Facebook ID/Pages/Groups</label>
+                <input class="form-control" formControlName="facebookDetails"  placeholder="Enter Facebook Details">
+
+                <label for="twittedId">Twitter Handle</label>
+                <input class="form-control" formControlName="twittedId"  placeholder="Enter Twitter Details">
+
+                <label for="instagramId">Instagram ID</label>
+                <input class="form-control" formControlName="instagramId"  placeholder="Enter Instagram Details">
+
+                <label for="youTubeDetails">YouTube Channels Url</label>
+                <input class="form-control" formControlName="youTubeDetails"  placeholder="Enter YouTube Details">
+
+                <label for="whatsAppDetails">WhatsApp No And Groups</label>
+                <input class="form-control" formControlName="whatsAppDetails"  placeholder="Enter WhatsApps Details">
+
+                <label for="telegramNo">Telegram ID</label>
+                <input class="form-control" formControlName="telegramNo"  placeholder="Enter Telegram Details">
+
+                <label for="imoNo">IMO No</label>
+                <input class="form-control" formControlName="imoNo"  placeholder="Enter IMO Details">
+
+                <label for="tiktokId">TikTok ID</label>
+                <input class="form-control" formControlName="tiktokId"  placeholder="Enter Tiktok Details">
+
+                <label for="heloId">Helo ID</label>
+                <input class="form-control" formControlName="heloId"  placeholder="Enter Helo Details">
+
+                <label for="previousCases">Previous Cases (If any)</label>
+                <input class="form-control" formControlName="previousCases"  placeholder="Enter Previous Case Details">
+
+                <label for="linkedInId">LinkedIn ID</label>
+                <input class="form-control" formControlName="linkedInId"  placeholder="Enter LinkedIn ID">
+                <!-- <input type="file" class="file-upload" onchange="console.log(event.target.files)"> -->
+
+
+
+              </div>
+
+
+
+
+            </div>
+
+            <div>
+              <button style="margin-top: 20px;
+              float: left;" role="button" class="button-name"
+              (click)="submitCyberBullyData();">
+              Submit</button>
+            </div>
+
+        </form>
+
+
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+
+</div>

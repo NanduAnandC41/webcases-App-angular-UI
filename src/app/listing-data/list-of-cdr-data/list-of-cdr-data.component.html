@@ -1,0 +1,52 @@
+<div id="list-cdr-data">
+
+  <div class="nav-alignment">
+    <app-nav-bar></app-nav-bar>
+  </div>
+
+
+  <div class="card m-3">
+
+    <div class="card-container card-body">
+      <h1 class="mb-5">List Of CDR Data</h1>
+
+      <table id="cdrDataTable" datatable [dtOptions]="dtOptions"
+      class="row-border hover table table-striped table-sm">
+          <thead>
+              <tr>
+                  <th>Crime No</th>
+                  <th>Party A</th>
+                  <th>Party B</th>
+                  <th>Date & Time</th>
+                  <th>Duration</th>
+                  <th>Police Station</th>
+
+              </tr>
+          </thead>
+
+          <tbody>
+              <tr *ngFor="let val of items">
+                  <td (click)="redirectToCdrData(val.crime_no)">{{ val.crime_no }}</td>
+
+                  <td>{{ val.crime_a_party }}</td>
+
+                  <td>{{ val.crime_b_party }}</td>
+
+                  <td>{{ val.crime_date_time }}</td>
+
+                  <td>{{ val.duration }}</td>
+
+                  <td>{{ val.pl_station_name }}</td>
+              </tr>
+          </tbody>
+      </table>
+    </div>
+
+  </div>
+
+
+
+</div>
+
+
+
