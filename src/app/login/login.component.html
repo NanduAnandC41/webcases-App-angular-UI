@@ -33,22 +33,23 @@
         />
 
       </div>
+      <h6 class="card-title" style="float: right;
+        width: 50%;
+        display: block;
+        margin-top: 8px;
+        ">
+          <a href="change-password">Forgot Password ?</a>
+        </h6>
       <div class="form-group" style="margin-top: 10px;">
-        <button class="btn btn-primary btn-block"
+        <button class="btn btn-primary btn-block btn-login"
         (click)="loggedIn()"
         >
           Login
         </button>
       </div>
       <div>
-        <h6 class="card-title" style="float: left;
-        width: 50%;
-        display: block;
-        margin-top: 8px;">
-          <a href="change-password">Forgot Password ?</a>
-        </h6>
-        <button class="btn btn-primary btn-block" style="float: left;
-        width: 50%;" (click)="createUser();">
+        <button class="btn btn-block" style="float: left;
+        width: 100%;background-color: #0dddc6;text-align: center;margin-top: 20px;" (click)="createUser();">
           Create User
         </button>
       </div>

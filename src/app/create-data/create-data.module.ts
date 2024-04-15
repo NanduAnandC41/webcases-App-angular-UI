@@ -11,6 +11,7 @@ import { CafFormsComponent } from './caf-forms/caf-forms.component';
 import { NcrpDataComponent } from './ncrp-data/ncrp-data.component';
 import { SuspectAccDataComponent } from './suspect-acc-data/suspect-acc-data.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { CafFormsDataComponent } from './caf-forms-data/caf-forms-data.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     SuspectDataComponent,
     SdrDataComponent,
     CafFormsComponent,
+    CafFormsDataComponent,
     NcrpDataComponent,
     SuspectAccDataComponent,
     NavBarComponent,

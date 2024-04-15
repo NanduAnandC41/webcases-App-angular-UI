@@ -1,15 +1,22 @@
 .navbar-brand{
   background: url(../../../assets/imgs/appolice.png) no-repeat 6px center;
-  width: 150px;
+  width: 90px;
   height: 65px;
   display: block;
 }
 
 
 .navbar-main-image{
-  background: url(../../../assets/imgs/master_photo.png) no-repeat 6px center;
-  width: 150px;
-  height: 65px;
+  background: url(../../../assets/imgs/master_photo.png) no-repeat 0px center;
+  width: 70px;
+  height: 70px;
   display: block;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  margin:10px;
 }
+.header-align{
+  padding: 0% 3%;
+}
+
 

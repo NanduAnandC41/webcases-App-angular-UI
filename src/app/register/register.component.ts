@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule  } from "@angular/forms";
 import { ScreenPages, StationNamesDTO,
   UserCreationDTO } from '../models/state.constants';
@@ -31,6 +32,8 @@ export class RegisterComponent implements OnInit{
 
 
   constructor(protected formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
     private backendConnectionService:BackendConnectionService,
     private authService: AuthService) {
 
@@ -127,13 +130,14 @@ export class RegisterComponent implements OnInit{
       screenId: this.creatUserForm.value.screenName[0]
     }
 
-    console.log("post Obj : ", createUserObj);
+    // console.log("post Obj : ", createUserObj);
 
     this.authService.register(createUserObj).subscribe(res => {
       console.log("User Registration Response : ", res);
       if(res && res.success){
         console.log(res);
-        alert(res);
+        // alert(res);
+        this.router.navigateByUrl('/login');
       }
     });
 

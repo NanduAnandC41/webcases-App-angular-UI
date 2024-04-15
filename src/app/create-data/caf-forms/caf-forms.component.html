@@ -1,1 +1,49 @@
-<p>caf-forms works!</p>
+
+
+
+<div id="caf-data">
+    
+    <div class="nav-alignment">
+        <app-nav-bar></app-nav-bar>
+      </div>
+    
+  <div class="sdr-componnent sdr-data-body">
+    <div style="margin-top: 20px;">
+
+        <form [formGroup]="cafformDataForm"  accept-charset="utf-8" enctype="multipart/form-data">
+
+            <div class='aligned_form form-group'>
+               
+
+              <div style="margin-top: 10px;">
+               <div class="sdr-field">
+                <label for="uploadFile">Phone Number</label>
+                <input class="form-control" formControlName="id"  placeholder="Enter Phone Name">
+            </div>
+            <div class="sdr-field">
+                <label for="uploadFile">Crime Number </label>
+                <input class="form-control" formControlName="firNo"  placeholder="Enter Crime Number">
+            </div>
+            <div class="sdr-field">
+                <label for="uploadFile">Station Name</label>
+                <input class="form-control" formControlName="Secoflaw"  placeholder="Enter station name">
+            </div>
+            <div class="sdr-field">
+                <label for="uploadFile">CAF Year</label>
+                <input class="form-control" formControlName="Secoflaw"  placeholder="Enter CAF year">
+            </div>
+                </div>
+            </div>
+                               <div>
+                                <div class="container">
+                  <button style="margin-top: 20px;
+                  float: left;" role="button" class="button-name">
+                  Submit</button>
+                  </div>
+                </div>
+
+        </form>
+    </div>
+  </div>
+
+</div>

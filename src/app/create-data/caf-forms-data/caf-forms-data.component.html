@@ -1,0 +1,393 @@
+<div id="caf-formdata">
+  <div class="nav-alignment">
+    <app-nav-bar></app-nav-bar>
+  </div>
+
+  <div class="caf-componnent caf-data-body">
+    <div class="box" style="margin: 5px;">
+      <div style="float: left; width: 40%;">
+        <button style="margin:3px" role="button" class="button-name" [disabled]="newDataButton"
+          (click)="addCafFormDetails()">New Data</button>
+      </div>
+      <div style="float: right; width: 50%;">
+        <button style="margin:3px" role="button" class="button-name" [disabled]="updateDataButton"
+          (click)="updateCafFormSearchValue()">Modify</button>
+        <button style="margin:3px" role="button" class="button-name" [disabled]="bulkDataButton"
+          (click)="bulkUploadOfCafFormData()">Bulk Upload</button>
+        <!-- <button style="margin:3px" role="button" class="button-name">Search</button> -->
+      </div>
+    </div>
+
+    <!-- <div class="box" style="margin: 5px;">
+    <div style="float: left; width: 50%;">
+      <input class="form-control" [(ngModel)]="searchValue"  placeholder="Enter Search Value">
+    </div>
+    <div style="float: right; width: 50%;">
+        <button style="margin-left: 10px;" role="button" class="button-name"
+        (click)="cafFormSearchValue()">Search</button>
+    </div>
+  </div> -->
+
+    <div style="margin-top: 20px;">
+      <form [formGroup]="cafDataForm" accept-charset="utf-8" enctype="multipart/form-data">
+
+        <div class='aligned_form form-group'>
+          <div class="sdr-field">
+            <label for="uploadFile">Upload </label>
+
+            <input class="form-control" formControlName="uploadFile" type="file" name="uploadFile"
+              (change)="onChangeFileBulkUpload($event)">
+          </div>
+          <!-- <div class="dropdown-search-btn sdr-field">
+            <input class="form-control" formControlName="searchValue" placeholder="Enter Search Field"
+              style="margin-right: 5px; width: 30%;height: 45px;">
+            <button style="margin:3px" role="button" class="button-name" style="margin-right: 5px;"
+              (click)="seachValueToCafFormDataForm();">
+              Search</button>
+
+          </div> -->
+
+          <div style="margin-top: 10px;">
+            <div class="sdr-field">
+              <label for="typeOfSubscriber">Type Of Subscriber</label>
+              <input class="form-control" formControlName="typeOfSubscriber" placeholder="Enter Subscriber Type">
+            </div>
+            <div class="sdr-field">
+              <label for="mobileNoAllotted">Mobile No. Allotted</label>
+              <input class="form-control" formControlName="mobileNoAllotted" placeholder="Enter Mobile No">
+            </div>
+            <div class="sdr-field">
+              <label for="imsiNo">IMSI No</label>
+              <input class="form-control" formControlName="imsiNo" placeholder="Enter IMSI No">
+            </div>
+            <div class="sdr-field">
+              <label for="emailId">Email ID</label>
+              <input class="form-control" formControlName="emailId" placeholder="Enter Email ID">
+            </div>
+            <div class="sdr-field">
+              <label for="customerName">Customer Name</label>
+              <input class="form-control" formControlName="customerName" placeholder="Enter Name">
+            </div>
+            <div class="sdr-field">
+              <label for="fatherOrHusbandNmame">Father / Husband Name</label>
+              <input class="form-control" formControlName="fatherOrHusbandNmame" placeholder="Enter Name">
+            </div>
+            <div class="sdr-field">
+              <label for="dateOfBirth">Date Of Birth</label>
+              <input type="date" class="form-control" formControlName="dateOfBirth" value="currentDate">
+            </div>
+            <div class="sdr-field" style="display: flex;
+                flex-flow: row;
+                align-content: flex-start;">
+              <label for="gender">Gender</label>
+              <select formControlName="gender" class="form-control" style="width: 30%;
+                  padding-left: 43px;">
+                <option>Dropdown List</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+                <!-- <option *ngFor="let web of websiteList">{{web}}</option> -->
+              </select>
+
+            </div>
+            <div class="sdr-field">
+              <label for="panCardNo">PAN Card No</label>
+              <input class="form-control" formControlName="panCardNo" placeholder="Enter PAN No">
+            </div>
+            <div class="sdr-field">
+              <label for="gstNo">GST No</label>
+              <input class="form-control" formControlName="gstNo" placeholder="Enter GST No">
+            </div>
+            <div class="sdr-field">
+              <label for="alternatePhNo">Alternate Contact No</label>
+              <input class="form-control" formControlName="alternatePhNo" placeholder="Enter Alternate No">
+            </div>
+            <div class="sdr-field" style="display: flex;
+                flex-flow: row;
+                align-content: flex-start;">
+              <label for="mobileUsedFor">Mobile No Used For</label>
+              <select formControlName="gender" class="form-control" style="width: 30%;
+                  padding-left: 43px;">
+                <option>Dropdown List</option>
+                <option>Self</option>
+                <option>Family / Relatives</option>
+                <option>Known Person</option>
+                <!-- <option *ngFor="let web of websiteList">{{web}}</option> -->
+              </select>
+
+            </div>
+            <div class="sdr-field">
+              <label for="customerSignature">Customer Signature</label>
+              <input class="form-control" formControlName="customerSignature" type="file" name="customerSignature">
+            </div>
+            <div class="sdr-field">
+              <label for="profession">Profession</label>
+              <input class="form-control" formControlName="profession" placeholder="Enter Profession">
+            </div>
+            <div class="sdr-field">
+              <label for="nationality">Nationality</label>
+              <input class="form-control" formControlName="nationality" placeholder="Enter Nationality">
+            </div>
+            <div class="sdr-field">
+              <label for="passportNo">Passport No</label>
+              <input class="form-control" formControlName="passportNo" placeholder="Enter Passport No">
+            </div>
+            <div class="sdr-field">
+              <label for="visaExpiry">Visa Expiry</label>
+              <input type="date" class="form-control" formControlName="visaExpiry" value="currentDate">
+            </div>
+            <div class="sdr-field">
+              <label for="visaType">Visa Type</label>
+              <input class="form-control" formControlName="visaType" placeholder="Enter Visa type">
+            </div>
+            <div class="sdr-field">
+              <label for="visaNo">Visa No</label>
+              <input class="form-control" formControlName="visaNo" placeholder="Enter Visa No">
+            </div>
+            <div class="accordion">
+              <h5 class="title" (click)="localAddressAccordian = !localAddressAccordian"><u>Local Address</u></h5>
+              <div class="content-container" [class.opened]="localAddressAccordian"
+                style="margin-left: 8px; margin-bottom: 10px;">
+                <!-- <p class="content">Content of the accordion</p> -->
+                <div class="sdr-field">
+                  <label for="localCareOf">(C/O) / (D/O) / (S/O) / (W/O) / (H/O)</label>
+                  <input class="form-control" formControlName="localCareOf" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="localHouseNo">House No / Flat No./Building/ Apartment</label>
+                  <input class="form-control" formControlName="localHouseNo" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="localStreetName">Street Address/Road Name</label>
+                  <input class="form-control" formControlName="localStreetName" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="localAreaName">Area/Sector/Locality</label>
+                  <input class="form-control" formControlName="localAreaName" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="localLandmark">Landmark </label>
+                  <input class="form-control" formControlName="localLandmark" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="localTown">Village/Town/ City </label>
+                  <input class="form-control" formControlName="localTown" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="localDistrict">District </label>
+                  <input class="form-control" formControlName="localDistrict" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="localState">State/UT </label>
+                  <input class="form-control" formControlName="localState" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="localPinCode">Postal Code </label>
+                  <input class="form-control" formControlName="localPinCode" placeholder="Enter Details">
+                </div>
+
+              </div>
+            </div>
+
+            <div class="accordion">
+              <h5 class="title" (click)="permanentAddressAccordian = !permanentAddressAccordian"><u>Permanent
+                  Address</u>
+              </h5>
+              <div class="content-container" [class.opened]="permanentAddressAccordian"
+                style="margin-left: 8px; margin-bottom: 10px;">
+                <!-- <p class="content">Content of the accordion</p> -->
+                <div class="sdr-field">
+                  <label for="permanentCareOf">(C/O) / (D/O) / (S/O) / (W/O) / (H/O)</label>
+                  <input class="form-control" formControlName="permanentCareOf" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="permanentHouseNo">House No / Flat No./Building/ Apartment</label>
+                  <input class="form-control" formControlName="permanentHouseNo" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="permanentStreetName">Street Address/Road Name</label>
+                  <input class="form-control" formControlName="permanentStreetName" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="permanentAreaName">Area/Sector/Locality</label>
+                  <input class="form-control" formControlName="permanentAreaName" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="permanentLandmark">Landmark </label>
+                  <input class="form-control" formControlName="permanentLandmark" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="permanentTown">Village/Town/ City </label>
+                  <input class="form-control" formControlName="permanentTown" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="permanentDistrict">District </label>
+                  <input class="form-control" formControlName="permanentDistrict" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="permanentState">State/UT </label>
+                  <input class="form-control" formControlName="permanentState" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="permanentPinCode">Postal Code </label>
+                  <input class="form-control" formControlName="permanentPinCode" placeholder="Enter Details">
+                </div>
+
+
+              </div>
+            </div>
+
+
+            <div class="accordion">
+              <h5 class="title" (click)="officeAddressAccordian = !officeAddressAccordian"><u>Office Address</u></h5>
+              <div class="content-container" [class.opened]="officeAddressAccordian"
+                style="margin-left: 8px; margin-bottom: 10px;">
+                <!-- <p class="content">Content of the accordion</p> -->
+                <div class="sdr-field">
+                  <label for="officeHouseNo">House No / Flat No./Building/ Apartment</label>
+                  <input class="form-control" formControlName="officeHouseNo" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="officeStreetName">Street Address/Road Name</label>
+                  <input class="form-control" formControlName="officeStreetName" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="officeAreaName">Area/Sector/Locality</label>
+                  <input class="form-control" formControlName="officeAreaName" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="officeLandmark">Landmark </label>
+                  <input class="form-control" formControlName="officeLandmark" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="officeTown">Village/Town/ City </label>
+                  <input class="form-control" formControlName="officeTown" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="officeDistrict">District </label>
+                  <input class="form-control" formControlName="officeDistrict" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="officeState">State/UT </label>
+                  <input class="form-control" formControlName="officeState" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="officePinCode">Postal Code </label>
+                  <input class="form-control" formControlName="officePinCode" placeholder="Enter Details">
+                </div>
+
+              </div>
+            </div>
+
+
+            <div class="accordion">
+              <h5 class="title" (click)="proofOfIdentityAccordian = !proofOfIdentityAccordian"><u>Proof Of Identity
+                  Details</u></h5>
+              <div class="content-container" [class.opened]="proofOfIdentityAccordian"
+                style="margin-left: 8px; margin-bottom: 10px;">
+                <div class="sdr-field">
+                  <label for="typeOfPoi">Type of POI</label>
+                  <input class="form-control" formControlName="typeOfPoi" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="proofIdentityDocNo">Document No</label>
+                  <input class="form-control" formControlName="proofIdentityDocNo" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="proofIdentityDateOfIssue">Date of Issue</label>
+                  <input type="date" class="form-control" formControlName="proofIdentityDateOfIssue"
+                    value="currentDate">
+                </div>
+                <div class="sdr-field">
+                  <label for="proofIdentityPlaceOfIssue">Place of Issue </label>
+                  <input class="form-control" formControlName="proofIdentityPlaceOfIssue" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="proofIdentityAuthority">Issuing Authority</label>
+                  <input class="form-control" formControlName="proofIdentityAuthority" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="proofIdentityOfFile">Upload</label>
+                  <input class="form-control" formControlName="proofIdentityOfFile" type="file" name="upload">
+                </div>
+              </div>
+            </div>
+
+
+            <div class="accordion">
+              <h5 class="title" (click)="proofOfAddressAccordian = !proofOfAddressAccordian"><u>Proof Of Address
+                  Details</u></h5>
+              <div class="content-container" [class.opened]="proofOfAddressAccordian"
+                style="margin-left: 8px; margin-bottom: 10px;">
+                <div class="sdr-field">
+                  <label for="typeOfPoa">Type of POA</label>
+                  <input class="form-control" formControlName="typeOfPoa" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="proofAddressDocNo">Document No</label>
+                  <input class="form-control" formControlName="proofAddressDocNo" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="proofAddressDateOfIssue">Date of Issue</label>
+                  <input type="date" class="form-control" formControlName="proofAddressDateOfIssue" value="currentDate">
+                </div>
+                <div class="sdr-field">
+                  <label for="proofAddressPlaceOfIssue">Place of Issue </label>
+                  <input class="form-control" formControlName="proofAddressPlaceOfIssue" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="proofAddressAuthority">Issuing Authority</label>
+                  <input class="form-control" formControlName="proofAddressAuthority" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="proofOfAddressFile">Upload</label>
+                  <input class="form-control" formControlName="proofOfAddressFile" type="file" name="upload">
+                </div>
+              </div>
+            </div>
+
+
+            <div class="accordion">
+              <h5 class="title" (click)="othersAccordian = !othersAccordian"><u>Others</u></h5>
+              <div class="content-container" [class.opened]="othersAccordian"
+                style="margin-left: 8px; margin-bottom: 10px;">
+                <div class="sdr-field">
+                  <label for="totalNoOfConnections">Customer Total No.Of Connections</label>
+                  <input class="form-control" formControlName="totalNoOfConnections" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="existingVIno">Existing VI No</label>
+                  <input class="form-control" formControlName="existingVIno" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="tarrifPlanApplied">Tariff Plan applied</label>
+                  <input type="date" class="form-control" formControlName="tarrifPlanApplied" value="currentDate">
+                </div>
+                <div class="sdr-field">
+                  <label for="valueAddedServices">Value Added Services applied (if any) </label>
+                  <input class="form-control" formControlName="valueAddedServices" placeholder="Enter Details">
+                </div>
+                <div class="sdr-field">
+                  <label for="addedOnDetails">Details of add on / Value Added Services</label>
+                  <input class="form-control" formControlName="addedOnDetails" placeholder="Enter Details">
+                </div>
+              </div>
+
+            </div>
+
+
+          </div>
+
+          <div>
+            <button style="margin-top: 20px;
+            float: left;" role="button" class="button-name" (click)="submitCafFormsData();">
+              Submit</button>
+          </div>
+
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+</div>

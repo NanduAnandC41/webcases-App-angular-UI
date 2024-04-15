@@ -104,3 +104,256 @@ export interface CyberBullyDataDTO{
   previousCases: string;
   linkedInId: string;
 }
+
+
+
+export interface SuspectDataDTO{
+  modeOfOperandi: string;
+  firNo: string;
+  secOfLaw: string;
+  stationName: string;
+  stationId: string;
+
+  suspectName: string;
+  fatherName: string;
+  address: string;
+  suspectPhoneNos: string;
+  suspectImeis: string;
+  suspectCaf: any;
+  suspectBpartyNos: string;
+  bankAcntNos: string;
+  ifscs: string;
+  upIds: string;
+
+  aadharNo: string;
+  rationCard: string;
+  drivingLicense: string;
+  vehicleDetails: string;
+  panCardNo: string;
+  gmailIds: string;
+  faceBookIds: string;
+  instagramIds: string;
+  whatsAppNos: string;
+  otherSocialAccnts: string;
+  photosOfSuspect: any;
+  caseRelatedScreenShots: any;
+  suspectWebsiteAddress: string;
+  dateOfArrest: string;
+  previousCrimeHistory: string;
+  remarks: string;
+}
+
+
+
+
+export interface NcrpDataDTO{
+  crimePetitionNo: string;
+  complaintCategory: string;
+  complaintSubCategory: string;
+  additionalInfo: string;
+  userData: string;
+  incidentDateTime: string;
+  complaintDate: string;
+
+
+  complaintName: string;
+  complaintMobileNo: string;
+  complaintGuardianName: string;
+  complaintEmailId: string;
+  complaintHouseNo: string;
+  complaintStreetName: string;
+  complaintColony: string;
+  complaintVillageTown: string;
+  complaintTehsil: string;
+  complaintPincode: string;
+  complaintStationName: string;
+  complaintStationId: string;
+  complaintDistrict: string;
+  complaintState: string;
+  complaintRelationWithVictim: string;
+
+  suspectOtherInfo: string;
+  suspectHouseNo: string;
+  suspectStreetName: string;
+  suspectColony: string;
+  suspectVillageTown: string;
+  suspectPincode: string;
+  suspectTehsil: string;
+  suspectStationName: string;
+  suspectStationId: string;
+  suspectDistrict: string;
+  suspectState: string;
+  suspectComplaintAddInfo: string;
+
+  transactionSno: string;
+  transactionBankWallet: string;
+  transactionMerchant: string;
+  transactionAccountNo: string;
+  transactionWalletId: string;
+  transactionCardDetails: string;
+  transactionAmount: string;
+  transactionReference: string;
+  transactionNo: string;
+  transactionDate: string;
+  transactionComplaintDate: string;
+
+
+  replySno: string;
+  replyActionBankWallet: string;
+  replyAccountNo: string;
+  replyTransactionId: any;
+  replyTransactionAmount: any;
+  replyRemarks: string;
+
+}
+
+
+
+
+export interface SdrDataDTO{
+  phoneNo: string;
+  alterPhoneNo: string;
+  nameOfSubscriber: string;
+  dateOfBirth: string;
+  guardianName: string;
+  localAddress: string;
+  permanentAddress: string;
+  emailId: string;
+  gender: string;
+  nationality: string;
+  profession: string;
+
+  panNo: string;
+  photoProof: any;
+  cafSerialNo: string;
+  idProof: any;
+  subscriberStatus: string;
+
+  connectionType: string;
+  localReference: string;
+  customerSignature: any;
+  latitude: string;
+  longitude: string;
+  imsiNo: string;
+  serviceProvider: string;
+  connectionStatus: string;
+  previousServiceInfo: string;
+  previousCircle: string;
+
+  activationDateTime: any;
+  transactionId: string;
+  customerPhoto: any;
+  eKycAuthResponse: string;
+  eKycDeclareResponse: string;
+  agentAadharNo: string;
+  posAuthResponse: string;
+  circle: string;
+  entryDate: string;
+
+  stationName: string;
+  stationId: string;
+}
+
+
+
+export interface CafFormDataDTO{
+  typeOfSubscriber: string;
+  allottedMobileNo: string;
+  imsiNo: string;
+  emailId: string;
+  customerName: string;
+  guardianName: string;
+
+  dateOfBirth: string;
+  gender: string;
+  panCardNo: string;
+  gstNo: string;
+  alternatePhoneNo: string;
+  mobileUsedFor: string;
+  customerSignature: any;
+
+
+  profession: string;
+  nationality: any;
+  passportNo: string;
+  visaExpiry: any;
+  visaType: string;
+  visaNo: string;
+
+  localCareOf: string;
+  localHouseApartmentNo: string;
+  localStreetAddress: any;
+  localAreaLocality: string;
+  localLandmark: string;
+  localVillageCity: string;
+  localDistrict: string;
+  localState: string;
+  localPinCode: string;
+
+
+  permanentCareOf: any;
+  permanentHouseApartmentNo: string;
+  permanentStreetAddress: any;
+  permanentAreaLocality: string;
+  permanentLandmark: string;
+  permanentVillageCity: string;
+  permanentDistrict: string;
+  permanentState: string;
+  permanentPinCode: string;
+
+  officeCareOf: any;
+  officeHouseApartmentNo: string;
+  officeStreetAddress: any;
+  officeAreaLocality: string;
+  officeLandmark: string;
+  officeVillageCity: string;
+  officeDistrict: string;
+  officeState: string;
+  officePinCode: string;
+
+  proofOfIdentityType: any;
+  proofOfIdentityDocumentNo: string;
+  proofOfIdentityDateOfIssue: any;
+  proofOfIdentityPlaceOfIssue: string;
+  proofOfIdentityIssuingAuthority: string;
+  proofOfIdentityFile: any;
+
+
+  proofOfAddressType: any;
+  proofOfAddressDocumentNo: string;
+  proofOfAddressDateOfIssue: any;
+  proofOfAddressPlaceOfIssue: string;
+  proofOfAddressIssuingAuthority: string;
+  proofOfAddressFile: any;
+
+  othersNoOfConnections: any;
+  othersViNo: string;
+  othersTariffPlan: any;
+  othersValueAdded: string;
+  othersAddOn: string;
+
+  stationName: string;
+  stationId: string;
+}
+
+
+export interface SuspectAccountDTO{
+  name: string;
+  accountNo: string;
+  phoneNo: string;
+  upIds: string;
+  urls: string;
+  remarks: string;
+
+  stationName: string;
+  stationId: string;
+}
+
+
+
+
+
+
+
+
+

@@ -81,6 +81,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
     this.authService.login(this.loginForm.value.username,
       this.loginForm.value.password).subscribe(res => {
+        console.log(res);
       this.storageService.saveToken(res.accessToken);
       this.storageService.saveUser(res);
 

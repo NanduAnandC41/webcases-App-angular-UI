@@ -6,6 +6,12 @@ label {
 .card-container.card {
   max-width: 400px !important;
   padding: 40px 40px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%, -50%);
 }
 
 .card {
@@ -40,4 +46,7 @@ label {
 
     height: 100vh;
     /* display: flex; */
+}
+.btn-login{
+  width: 100%;
 }

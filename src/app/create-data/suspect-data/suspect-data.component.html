@@ -1,1 +1,201 @@
-<p>suspect-data works!</p>
+<div id="suspect-data">
+
+    <div class="nav-alignment">
+        <app-nav-bar></app-nav-bar>
+    </div>
+
+    <div class="sdr-componnent suspect-data-body">
+
+        <div class="box" style="margin: 5px;">
+            <div style="float: left; width: 45%;">
+                <button style="margin:3px" role="button" class="button-name" [disabled]="newDataButton"
+                    (click)="addSuspectDataDetails()">New Data</button>
+            </div>
+            <div style="float: left; width: 50%;">
+                <button style="margin:3px" role="button" class="button-name" [disabled]="updateDataButton"
+                    (click)="updateSuspectDataSearchValue()">Modify</button>
+                <button style="margin:3px" role="button" class="button-name" [disabled]="bulkDataButton"
+                    (click)="bulkUploadOfSuspectData()">Bulk Upload</button>
+                <!-- <button style="margin:3px" role="button" class="button-name">Search</button> -->
+            </div>
+        </div>
+
+
+
+        <div style="margin-top: 20px;">
+
+            <form [formGroup]="suspectDataForm" accept-charset="utf-8" enctype="multipart/form-data">
+
+                <div class='aligned_form form-group'>
+
+                    <div class="sdr-field">
+                        <label for="uploadFile">Upload </label>
+                        <input class="form-control" formControlName="uploadFile" type="file" name="uploadFile"
+                            (change)="onChangeFileBulkUpload($event)">
+                    </div>
+
+
+
+                    <div style="margin-top: 10px;">
+                        <div class="sdr-field">
+                            <label for="ModusOfOperandi">Modus Operandi</label>
+                            <input class="form-control" formControlName="ModusOfOperandi"
+                                placeholder="Enter Modus Operandi">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="firNo">FIR No/PT No </label>
+                            <input class="form-control" formControlName="firNo" placeholder="Enter FIR No/PT No">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="SecOfLaw">Sec of Law</label>
+                            <input class="form-control" formControlName="SecOfLaw" placeholder="Enter Sec of law">
+                        </div>
+                        <!-- <div class="sdr-field">
+                <label for="SecOflaw">Police Station</label>
+                <input class="form-control" formControlName="SecOflaw"  placeholder="Enter Sec of law">
+            </div> -->
+                        <div class="sdr-field">
+                            <label for="name">Name</label>
+                            <input class="form-control" formControlName="name" placeholder="Enter Name">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="fatherName">Father Name</label>
+                            <input class="form-control" formControlName="fatherName" placeholder="Enter father name">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="address">Address</label>
+                            <input class="form-control" formControlName="address" placeholder="Enter Address">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="suspectPhoneNo">Suspect Phone Nos</label>
+                            <input class="form-control" formControlName="suspectPhoneNo"
+                                placeholder="Enter Suspect phone No">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="suspectUsedImeis">Suspect USED IMEIs</label>
+                            <input class="form-control" formControlName="suspectUsedImeis"
+                                placeholder="Enter Suspect USED IMEIs">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="suspectPdf">Suspect CAF (Customer Application Form)( PDF Upload)</label>
+                            <input class="form-control" formControlName="suspectPdf" type="file"
+                                placeholder="Enter Suspect CAF(PDF Upload)">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="suspectBparty">Suspect B Party Nos</label>
+                            <input class="form-control" formControlName="suspectBparty"
+                                placeholder="Enter Suspect B Party Nos">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="bankAccountNo">Bank Account Nos</label>
+                            <input class="form-control" formControlName="bankAccountNo"
+                                placeholder="Enter Bank Account Nos">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="ifsc">IFSC</label>
+                            <input class="form-control" formControlName="ifsc" placeholder="Enter IFSC">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="upiIds">UPI IDs</label>
+                            <input class="form-control" formControlName="upiIds" placeholder="Enter UPI IDs">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="aadharNo">Aadhar No</label>
+                            <input class="form-control" formControlName="aadharNo" placeholder="Enter Aadhar No">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="rationCardNo">Ration Card</label>
+                            <input class="form-control" formControlName="rationCardNo" placeholder="Enter Ration Card">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="drivingLicense">Driving License</label>
+                            <input class="form-control" formControlName="drivingLicense"
+                                placeholder="Enter Driving License">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="vehicleInfo">Vehicle Information</label>
+                            <input class="form-control" formControlName="vehicleInfo"
+                                placeholder="Enter Vehicle information">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="panNo">PAN No</label>
+                            <input class="form-control" formControlName="panNo" placeholder="Enter Pan No">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="gmailIds">Gmails</label>
+                            <input class="form-control" formControlName="gmailIds" placeholder="Enter gmail">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="facebookIds">Facebooks</label>
+                            <input class="form-control" formControlName="facebookIds" placeholder="Enter Facebooks">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="instagramId">Instagrams</label>
+                            <input class="form-control" formControlName="instagramId" placeholder="Enter Instagram">
+                        </div>
+
+                        <div class="sdr-field">
+                            <label for="whatsappNo">Whatsapp Nos</label>
+                            <input class="form-control" formControlName="whatsappNo" placeholder="Enter Whatsapp">
+                        </div>
+
+                        <div class="sdr-field">
+                            <label for="otherSocialMedia">Other Social Media Accounts</label>
+                            <input class="form-control" formControlName="otherSocialMedia"
+                                placeholder="Enter other social media accounts">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="photosOfSuspect">Photos of Suspect</label>
+                            <input class="form-control" formControlName="photosOfSuspect" type="file" name="uploadFile"
+                                (change)="suspectPhotoSelection($event)">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="caseRelatedScreens">Case Related Screenshots</label>
+                            <input class="form-control" formControlName="caseRelatedScreens" type="file"
+                                name="uploadFile" (change)="caseRelatedScreensSelection($event)">
+                        </div>
+
+                        <div class="sdr-field">
+                            <label for="longwebAddressitude">Website Address created by suspect</label>
+                            <input class="form-control" formControlName="webAddress"
+                                placeholder="Enter website address created by suspect">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="dateOfArrest">Date of Arrest</label>
+                            <input class="form-control" formControlName="dateOfArrest" type="datetime-local"
+                                placeholder="Please Select">
+                        </div>
+                    </div>
+                    <div class="sdr-field">
+                        <label for="previousCrimeData">Previous Crime History</label>
+                        <input class="form-control" formControlName="previousCrimeData"
+                            placeholder="Enter Previous crime history">
+                    </div>
+
+                    <div class="sdr-field">
+                        <label for="remarks">Remarks</label>
+                        <input class="form-control" formControlName="remarks" placeholder="Enter Remarks">
+                    </div>
+                    <div class="sdr-field">
+
+                        <label for="policeStation">Station Name </label>
+                        <select formControlName="policeStation" class="form-control" style="width: 30%;
+    padding-left: 43px;">
+                            <option *ngFor="let name of stationNames" [value]=name.stationId>{{name.stationName}}
+                            </option>
+                        </select>
+
+
+                    </div>
+                </div>
+                <div>
+                    <button style="margin-top: 20px;
+                  float: left;" role="button" class="button-name" (click)="submitSuspectData()">
+                        Submit</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>

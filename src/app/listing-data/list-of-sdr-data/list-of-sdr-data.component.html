@@ -1,1 +1,52 @@
-<p>list-of-sdr-data works!</p>
+<div id="list-sdr-data">
+
+  <div class="nav-alignment">
+    <app-nav-bar></app-nav-bar>
+  </div>
+
+
+  <div class="card m-3">
+
+    <div class="card-container card-body">
+      <h1 class="mb-5">List Of SDR Data</h1>
+
+      <table id="cdrDataTable" datatable [dtOptions]="dtOptions"
+      class="row-border hover table table-striped table-sm">
+          <thead>
+              <tr>
+                  <th>Telephone No</th>
+                  <th>Subscriber Name</th>
+                  <th>Date Of Birth</th>
+                  <th>Gender</th>
+                  <th>Profession</th>
+                  <th>Police Station</th>
+
+              </tr>
+          </thead>
+
+          <tbody>
+              <tr *ngFor="let val of items">
+                  <td (click)="redirectToCdrData(val.telephone_no)">{{ val.telephone_no }}</td>
+
+                  <td>{{ val.name_of_subscriber }}</td>
+
+                  <td>{{ val.date_of_birth }}</td>
+
+                  <td>{{ val.gender }}</td>
+
+                  <td>{{ val.profession }}</td>
+
+                  <td>{{ val.staion_name }}</td>
+              </tr>
+          </tbody>
+      </table>
+    </div>
+
+  </div>
+
+
+
+</div>
+
+
+

@@ -22,26 +22,19 @@ export class ListOfCdrDataComponent implements OnInit, AfterViewInit{
     private route: ActivatedRoute,
     private router: Router){
 
-    // this.backendConnectionService.getListOfCdrData().subscribe(res => {
-    //   if(res && res.success){
-    //     this.items = res.data;
+      // this.backendConnectionService.getListOfCdrData().subscribe(res => {
+      //   if(res && res.success){
+      //     this.items = res.data;
 
-    //   }
-    // });
+      //   }
+      // },
+      // err => console.error(err),
+      // () => console.log('Done Loading CDR Data'));
 
   }
 
 
   ngOnInit(): void {
-
-    this.backendConnectionService.getListOfCdrData().subscribe(res => {
-      if(res && res.success){
-        this.items = res.data;
-
-      }
-    },
-    err => console.error(err),
-    () => console.log('Done Loading Student Data'));
 
 
     this.dtOptions = {
@@ -50,15 +43,22 @@ export class ListOfCdrDataComponent implements OnInit, AfterViewInit{
       processing: true,
 
     };
-  }
 
-  ngAfterViewInit(): void {
     this.backendConnectionService.getListOfCdrData().subscribe(res => {
       if(res && res.success){
         this.items = res.data;
 
       }
-    });
+    },
+    err => console.error(err),
+    () => console.log('Done Loading CDR Data'));
+
+
+
+  }
+
+  ngAfterViewInit(): void {
+
   }
 
 

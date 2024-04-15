@@ -97,6 +97,7 @@
    width: 80%;
   margin: 0 auto;
   padding-left: 10px;
+  text-align: left;
 }
 
 
@@ -111,7 +112,8 @@ label {
 
 label + input {
   width: 30%;
-  margin: 0 30% 0 4%;
+  margin: 0 30% 0 0%;
+  margin-bottom: 20px;
 }
 
 

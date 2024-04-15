@@ -1,1 +1,328 @@
-<p>ncrp-data works!</p>
+<div id="sdr-data">
+
+    <div class="nav-alignment">
+        <app-nav-bar></app-nav-bar>
+    </div>
+
+    <div class="sdr-componnent sdr-data-body">
+        <div class="box" style="margin-top: 15px;">
+            <div style="float: left; width: 45%;">
+                <button style="margin:3px" role="button" class="button-name" [disabled]="newDataButton"
+                    (click)="addNcrDetails()">New Data</button>
+            </div>
+            <div style="float: right; width: 50%;">
+                <button style="margin:3px" role="button" class="button-name" [disabled]="updateDataButton"
+                    (click)="updateNcrSearchValue()">Modify</button>
+                <button style="margin:3px" role="button" class="button-name" [disabled]="bulkDataButton"
+                    (click)="bulkUploadOfNcrData()">Bulk Upload</button>
+            </div>
+        </div>
+
+        <div style="margin-top: 20px;">
+
+            <form [formGroup]="ncrDataForm" accept-charset="utf-8" enctype="multipart/form-data">
+
+                <div class='form-group'>
+
+                  <div class="sdr-field">
+                    <label for="uploadFile">Upload </label>
+                    <input class="form-control" formControlName="uploadFile" type="file" name="uploadFile"
+                      (change)="onChangeFileBulkUpload($event)">
+                  </div>
+
+                    <div style="margin-top: 10px;">
+                        <div class="sdr-field">
+                            <label for="crimePetitionNo">Crime No/ Petition No</label>
+                            <input class="form-control" formControlName="crimePetitionNo" placeholder="Enter crime No">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="categoryComplaint">Category of complaint </label>
+                            <input class="form-control" formControlName="categoryComplaint"
+                                placeholder="Enter Category of complaint ">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="subCategoryComplaint">Sub Category of Complaint </label>
+                            <input class="form-control" formControlName="subCategoryComplaint"
+                                placeholder="Enter Sub Category of Complaint ">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="addInformation">Additional Information Presently Content </label>
+                            <input class="form-control" formControlName="addInformation"
+                                placeholder="Enter Additional Information Presently Content ">
+                        </div>
+
+                        <div class="sdr-field">
+                            <label for="userId">User ID</label>
+                            <input class="form-control" formControlName="userId" placeholder="Enter User ID">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="incidentDateTime">Incident Date/Time</label>
+                            <input class="form-control" type="date" formControlName="incidentDateTime"
+                                placeholder="Enter Local Address">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="complaintDate">Complaint Date</label>
+                            <input class="form-control" type="date" formControlName="complaintDate"
+                                placeholder="Enter Local Address">
+                        </div>
+                        <div class="accordion">
+                            <h5 class="title" (click)="complaintDetailsAccordian = !complaintDetailsAccordian">
+                                <u>Complaint
+                                    Details</u>
+                            </h5>
+                            <div class="content-container" [class.opened]="complaintDetailsAccordian"
+                                style="margin-left: 8px; margin-bottom: 10px;">
+                                <div class="sdr-field">
+                                    <label for="name">complaintName</label>
+                                    <input class="form-control" formControlName="complaintName" placeholder="Enter Name">
+                                </div>
+                                <div class="sdr-field">
+                                    <label for="complaintMobileNumber">Mobile Number</label>
+                                    <input class="form-control" formControlName="complaintMobileNumber"
+                                        placeholder="Enter Mobile Numer">
+                                </div>
+                                <div class="sdr-field">
+                                    <label for="complaintGuardianName">Father/Mother/Spouse Name</label>
+                                    <input class="form-control" formControlName="complaintGuardianName"
+                                        placeholder="Enter father/mother/spouse name">
+                                </div>
+                                <div class="sdr-field">
+                                    <label for="complaintEmailId">Email ID</label>
+                                    <input class="form-control" formControlName="complaintEmailId" placeholder="Enter Email">
+                                </div>
+                                <div class="sdr-field">
+                                    <label for="complaintStreetName">Street Name</label>
+                                    <input class="form-control" formControlName="complaintStreetName"
+                                        placeholder="Enter Street Name">
+                                </div>
+                                <div class="sdr-field">
+                                    <label for="complaintHouseNo">House No</label>
+                                    <input class="form-control" formControlName="complaintHouseNo" placeholder="Enter House No">
+                                </div>
+                                <div class="sdr-field">
+                                    <label for="complaintColony">Colony</label>
+                                    <input class="form-control" formControlName="complaintColony" placeholder="Enter Colony">
+                                </div>
+                                <div class="sdr-field">
+                                    <label for="complaintVillage">Village/Town</label>
+                                    <input class="form-control" formControlName="complaintVillage"
+                                        placeholder="Enter Village/Town">
+                                </div>
+                                <div class="sdr-field">
+                                    <label for="complaintTehsil">Tehsil</label>
+                                    <input class="form-control" formControlName="complaintTehsil" placeholder="Enter Tehsil">
+                                </div>
+                                <div class="sdr-field">
+                                    <label for="complaintPincode">Pincode</label>
+                                    <input class="form-control" formControlName="complaintPincode" placeholder="Enter Pincode">
+                                </div>
+                                <div class="sdr-field">
+                                    <!-- <label for="longitude">Police Station</label>
+    <input class="form-control" formControlName="gmails"  placeholder="Enter Police Station"> -->
+                                    <label for="complaintPoliceStation">Police station</label>
+                                    <select formControlName="complaintPoliceStation" class="form-control" style="width: 30%;">
+                                        <option *ngFor="let name of stationNames" [value]=name.stationId>
+                                            {{name.stationName}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="sdr-field">
+                                    <label for="complaintDistrict">District </label>
+                                    <input class="form-control" formControlName="complaintDistrict" placeholder="Enter District">
+                                </div>
+                                <div class="sdr-field">
+                                    <label for="complaintState">State</label>
+                                    <input class="form-control" formControlName="complaintState" placeholder="Enter State">
+                                </div>
+
+                                <div class="sdr-field">
+                                    <label for="relationWithVictim">Relation with Victim</label>
+                                    <input class="form-control" formControlName="relationWithVictim"
+                                        placeholder="Enter relation with victim">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion">
+                            <h5 class="title" (click)="suspectDetailsAccordian = !suspectDetailsAccordian">
+                                <u>Suspect Details</u>
+                            </h5>
+                            <div class="content-container" [class.opened]="suspectDetailsAccordian"
+                                style="margin-left: 8px; margin-bottom: 10px;">
+                                <div class="sdr-field">
+                                    <label for="suspectOtherInfo">Any Other Information / Details</label>
+                                    <input class="form-control" formControlName="suspectOtherInfo"
+                                        placeholder="Enter Any Other Information / Details">
+                                </div>
+                                <div class="sdr-field">
+                                    <label for="suspectHouseNo">House No</label>
+                                    <input class="form-control" formControlName="suspectHouseNo" placeholder="Enter House No">
+                                </div>
+
+                                <div class="sdr-field">
+                                    <label for="suspectStreet">street</label>
+                                    <input class="form-control" formControlName="suspectStreet" placeholder="Enter street">
+                                </div>
+                                <div class="sdr-field">
+                                    <label for="suspectColony">Colony</label>
+                                    <input class="form-control" formControlName="suspectColony" placeholder="Enter Colony">
+                                </div>
+                                <div class="sdr-field">
+                                    <label for="suspectVillage">Village/Town</label>
+                                    <input class="form-control" formControlName="suspectVillage"
+                                        placeholder="Enter Village/Town">
+                                </div>
+                                <div class="sdr-field">
+                                    <label for="suspectTehsil">Tehsil</label>
+                                    <input class="form-control" formControlName="suspectTehsil" placeholder="Enter Tehsil">
+                                </div>
+
+                                <div class="sdr-field">
+                                    <label for="suspectState">State</label>
+                                    <input class="form-control" formControlName="suspectState" placeholder="Enter State">
+                                </div>
+                                <div class="sdr-field">
+                                    <label for="suspectDistrict">District</label>
+                                    <input class="form-control" formControlName="suspectDistrict" placeholder="Enter District">
+                                </div>
+
+                                <div class="sdr-field">
+                                    <!-- <label for="longitude">police Station</label>
+    <input class="form-control" formControlName="webaddress"  placeholder="Enter Police Station"> -->
+                                    <label for="suspectPoliceStation">Station Name </label>
+                                    <select formControlName="suspectPoliceStation" class="form-control" style="width: 30%;
+   ">
+                                        <option *ngFor="let name of stationNames" [value]=name.stationId>
+                                            {{name.stationName}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="sdr-field">
+                                    <label for="pincode">Pincode</label>
+                                    <input class="form-control" formControlName="suspectPincode" type="datetime-local"
+                                        placeholder="Enter Pincode">
+                                </div>
+                                <div class="sdr-field">
+                                    <label for="suspectComplaintAddInfo">Complaint Additional info</label>
+                                    <input class="form-control" formControlName="suspectComplaintAddInfo"
+                                        placeholder="Enter complaint additional info">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion">
+                            <h5 class="title" (click)="transactionDetailsAccordian = !transactionDetailsAccordian">
+                                <u>Transaction
+                                    Details</u>
+                            </h5>
+                            <div class="content-container" [class.opened]="transactionDetailsAccordian"
+                                style="margin-left: 8px; margin-bottom: 10px;">
+                                <div class="sdr-field">
+                                    <label for="transactionSNo">S No.</label>
+                                    <input class="form-control" formControlName="transactionSNo" placeholder="Enter S. No.">
+                                </div>
+                                <div class="sdr-field">
+                                    <label for="transactionBankWallet">Bank/Wallet</label>
+                                    <input class="form-control" formControlName="transactionBankWallet" placeholder="Enter Bank/Wallet">
+                                </div>
+                                <div class="sdr-field">
+                                    <label for="transactionMerchant">Merchant</label>
+                                    <input class="form-control" formControlName="transactionMerchant" placeholder="Enter Merchant">
+                                </div>
+                                <div class="sdr-field">
+                                    <label for="transactionAcctNo">Account No</label>
+                                    <input class="form-control" formControlName="transactionAcctNo" placeholder="Enter Account No">
+                                </div>
+                                <div class="sdr-field">
+                                    <label for="transactionWalletId">Wallet ID</label>
+                                    <input class="form-control" formControlName="transactionWalletId"
+                                        placeholder="Enter Wallet ID">
+                                </div>
+                                <div class="sdr-field">
+                                    <label for="transactionCardData">Transaction ID Card Details </label>
+                                    <input class="form-control" formControlName="transactionCardData"
+                                        placeholder="Enter transaction ID">
+                                </div>
+                                <div class="sdr-field">
+                                    <label for="transactionAmount">Amount</label>
+                                    <input class="form-control" formControlName="transactionAmount" placeholder="Enter Amount">
+                                </div>
+                                <div class="sdr-field">
+                                    <label for="transactionReferenceNo">Reference No</label>
+                                    <input class="form-control" formControlName="transactionReferenceNo"
+                                        placeholder="Enter Reference No">
+                                </div>
+                                <div class="sdr-field">
+                                    <label for="transactionNo">Transaction No</label>
+                                    <input class="form-control" formControlName="transactionNo"
+                                        placeholder="Enter Transaction No">
+                                </div>
+                                <div class="sdr-field">
+                                    <label for="transactionDate">Transaction Date</label>
+                                    <input class="form-control" type="date" formControlName="transactionDate"
+                                        placeholder="Enter Transaction Date">
+                                </div>
+                                <div class="sdr-field">
+                                    <label for="transactionComplaintDate">Complaint Date </label>
+                                    <input class="form-control" formControlName="transactionComplaintDate"
+                                        placeholder="Enter complaint Date">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion">
+                            <h5 class="title" (click)="replyDetailsAccordian = !replyDetailsAccordian">
+                                <u>Reply Details</u>
+                            </h5>
+                            <div class="content-container" [class.opened]="replyDetailsAccordian"
+                                style="margin-left: 8px; margin-bottom: 10px;">
+                                <div class="sdr-field">
+                                    <label for="replySNo">S No.</label>
+                                    <input class="form-control" formControlName="replySNo" placeholder="Enter s.No">
+                                </div>
+                                <div class="sdr-field">
+                                    <label for="replyTakenBank">Acton Taken Bank / Wallet/ Merchant</label>
+                                    <input class="form-control" formControlName="replyTakenBank"
+                                        placeholder="Enter action taken">
+                                </div>
+                                <div class="sdr-field">
+                                    <label for="replyAccntNo">Account Number</label>
+                                    <input class="form-control" formControlName="replyAccntNo"
+                                        placeholder="Enter Account Number">
+                                </div>
+                                <div class="sdr-field">
+                                    <label for="replyTransactionId">Transaction ID</label>
+                                    <input class="form-control" formControlName="replyTransactionId"
+                                        placeholder="Enter Transaction ID">
+                                </div>
+                                <div class="sdr-field">
+                                    <label for="replyAmount">Amount</label>
+                                    <input class="form-control" formControlName="replyAmount" placeholder="Enter Amount">
+                                </div>
+                                <div class="sdr-field">
+                                    <label for="replyRemarks">Remarks</label>
+                                    <!-- <textarea class="form-control" formControlName="stationame"  placeholder="Enter Remarks">
+        </textarea> -->
+                                    <input class="form-control" formControlName="replyRemarks" placeholder="Enter Remarks">
+                                </div>
+                                <div class="sdr-field">
+                                    <!-- <label for="longitude">Station Name</label>
+    <input class="form-control" formControlName="stationame"  placeholder="Enter Station Name"> -->
+                                    <label for="replyPoliceStation">Station Name </label>
+                                    <select formControlName="replyPoliceStation" class="form-control" style="width: 30%;">
+                                        <option *ngFor="let name of stationNames" [value]=name.stationId>
+                                            {{name.stationName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                            </div>
+                            <button style="margin-top: 20px;
+                  float: left;" role="button" class="button-name"
+                  (click)="submitNcrpData()">
+                                Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,1 +1,48 @@
-<p>list-of-caf-forms-data works!</p>
+<div id="list-caf-form-data">
+
+  <div class="nav-alignment">
+    <app-nav-bar></app-nav-bar>
+  </div>
+
+  <div class="card m-3">
+
+    <div class="card-container card-body">
+      <h1 class="mb-5">List Of CAF Form Data</h1>
+
+      <table id="cdrDataTable" datatable [dtOptions]="dtOptions"
+      class="row-border hover table table-striped table-sm">
+          <thead>
+              <tr>
+                  <th>Mobile No</th>
+                  <th>Type Of Subscriber</th>
+                  <th>Email ID</th>
+                  <th>Customer Name</th>
+                  <th>Gender</th>
+                  <th>Passport No</th>
+
+              </tr>
+          </thead>
+
+          <tbody>
+              <tr *ngFor="let val of items">
+                  <td (click)="redirectToCyberBullyData(val.allotted_mobile_no)">{{ val.allotted_mobile_no }}</td>
+
+                  <td>{{ val.type_of_subscriber }}</td>
+
+                  <td>{{ val.email_id }}</td>
+
+                  <td>{{ val.customer_name }}</td>
+
+                  <td>{{ val.gender }}</td>
+
+                  <td>{{ val.passport_no }}</td>
+              </tr>
+          </tbody>
+      </table>
+    </div>
+
+  </div>
+
+
+
+</div>

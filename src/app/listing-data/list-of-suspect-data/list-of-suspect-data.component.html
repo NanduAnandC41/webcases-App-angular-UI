@@ -1,1 +1,52 @@
-<p>list-of-suspect-data works!</p>
+<div id="list-suspect-data">
+
+  <div class="nav-alignment">
+    <app-nav-bar></app-nav-bar>
+  </div>
+
+
+  <div class="card m-3">
+
+    <div class="card-container card-body">
+      <h1 class="mb-5">List Of Suspect Data</h1>
+
+      <table id="cdrDataTable" datatable [dtOptions]="dtOptions"
+      class="row-border hover table table-striped table-sm">
+          <thead>
+              <tr>
+                  <th>FIR / PT : No</th>
+                  <th>Sec Of Law</th>
+                  <th>Station Name</th>
+                  <th>Suspect Name</th>
+                  <th>Aadhar No</th>
+                  <th>Vehicle Details</th>
+
+              </tr>
+          </thead>
+
+          <tbody>
+              <tr *ngFor="let val of items">
+                  <td (click)="redirectToCdrData(val.fir_pt_no)">{{ val.fir_pt_no }}</td>
+
+                  <td>{{ val.sec_of_law }}</td>
+
+                  <td>{{ val.station_name }}</td>
+
+                  <td>{{ val.name }}</td>
+
+                  <td>{{ val.aadhar_no }}</td>
+
+                  <td>{{ val.vehicle_information }}</td>
+              </tr>
+          </tbody>
+      </table>
+    </div>
+
+  </div>
+
+
+
+</div>
+
+
+

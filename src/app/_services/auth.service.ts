@@ -20,12 +20,13 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(username: string, password: string): Observable<any> {
-    return this.http.post(
-      AUTH_API + 'login',
-      {
-        username,
-        password,
-      },httpOptions).pipe(catchError(this.handleError));
+
+    let postObj = {
+      email: username,
+      password: password
+    }
+
+    return this.http.post(AUTH_API + 'login',JSON.stringify(postObj),httpOptions).pipe(catchError(this.handleError));
   }
 
   register(postObj: UserCreationDTO): Observable<any> {

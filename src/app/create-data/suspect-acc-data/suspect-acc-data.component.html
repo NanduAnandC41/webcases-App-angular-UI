@@ -1,1 +1,68 @@
-<p>suspect-acc-data works!</p>
+<div id="sdr-data">
+
+  <div class="nav-alignment">
+    <app-nav-bar></app-nav-bar>
+  </div>
+
+  <div class="sdr-componnent sdr-data-body">
+    <div style="margin-top: 20px;">
+
+      <form [formGroup]="suspectAcntDataForm" accept-charset="utf-8" enctype="multipart/form-data">
+
+        <div class='aligned_form form-group'>
+
+
+          <div style="margin-top: 10px;">
+            <div class="sdr-field">
+              <label for="suspectName">Name</label>
+              <input class="form-control" formControlName="suspectName" placeholder="Enter Name">
+            </div>
+            <div class="sdr-field">
+              <label for="suspectAcntNo">Account Number </label>
+              <input class="form-control" formControlName="suspectAcntNo" placeholder="Enter Account Number">
+            </div>
+            <div class="sdr-field">
+              <label for="suspectPhoneNo">Phone Number</label>
+              <input class="form-control" formControlName="suspectPhoneNo" placeholder="Enter phone number">
+            </div>
+            <!-- <div class="sdr-field">
+                <label for="uploadFile">UpIds</label>
+                <input class="form-control" formControlName="Secoflaw"  placeholder="Enter nmae of Subscriber">
+            </div> -->
+            <div class="sdr-field">
+              <label for="suspectUpIds">UPI IDs</label>
+              <input class="form-control" formControlName="suspectUpIds" placeholder="Enter UPI IDs">
+            </div>
+            <div class="sdr-field">
+              <label for="suspectUrls">URLs</label>
+              <input class="form-control" formControlName="suspectUrls" placeholder="Enter URLs">
+            </div>
+
+            <div class="sdr-field">
+              <label for="remarks">Remarks</label>
+              <input class="form-control" formControlName="remarks" placeholder="Enter Remarks">
+            </div>
+
+            <div class="sdr-field">
+              <label for="policeStation">Station Name </label>
+              <select formControlName="policeStation" class="form-control" style="width: 30%;
+                  padding-left: 43px;">
+                <option *ngFor="let name of stationNames" [value]=name.stationId>{{name.stationName}}</option>
+              </select>
+
+            </div>
+
+
+          </div>
+        </div>
+        <div>
+          <button style="margin-top: 20px;
+                  float: left;" role="button" class="button-name">
+            Submit</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+</div>

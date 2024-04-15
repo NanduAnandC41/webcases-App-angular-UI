@@ -91,9 +91,11 @@ export class CdrDataComponent implements OnInit{
   }
 
   onChangeFileBulkUpload(event: any) {
-    console.log(event.target.files);
+    console.log(event.target.files[0]);
 
     console.log(this.cdrDataForm.value);
+
+    this.cdrDataForm.value.uploadFile = event.target.files[0];
 
     if(this.cdrDataForm.value.uploadFile != "" ||
       this.cdrDataForm.value.uploadFile != null){
@@ -113,6 +115,24 @@ export class CdrDataComponent implements OnInit{
 
   bulkUploadOfCdrData(): void {
     console.log("Bulk Upload CDR Data");
+
+    console.log(this.cdrDataForm.value.uploadFile);
+
+    this.backendConnectionService.submitCdrExcelDataUpload(this.cdrDataForm.value.uploadFile).subscribe(res => {
+
+      if(res && res.success){
+        console.log("Response value : ", res);
+        alert(res.data);
+        this.cdrDataForm.reset();
+      } else if(res && !res.success){
+        alert(res.data);
+      }
+    }, err => {
+      if(err){
+        alert(err);
+      }
+    });
+
   }
 
   submitCdrData(): void {

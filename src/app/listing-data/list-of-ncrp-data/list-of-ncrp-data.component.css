@@ -1,0 +1,33 @@
+#list-ncrp-data{
+  width: 100%;
+  float: left;
+  display: flex;
+  align-items: left;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.nav-alignment{
+  width: 20%;
+  float: left;
+}
+
+
+.card-container{
+  /* width: 80%; */
+  float: left;
+
+}
+
+
+.card.m-3{
+  width: 80%;
+  float: left;
+}
+
+
+
+
+

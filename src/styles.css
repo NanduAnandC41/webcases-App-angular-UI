@@ -1,2 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
+
+html,
+body {
+    font-family: 'Roboto';
+}
+
+.card-title {
+    line-height: 22px;
+    margin-bottom: 0px;
+}
+
+.card-title a {
+    color: #2e0ead;
+}
+
+.button-name {
+    color: #2e0ead;
+    border: 1px solid #2e0ead;
+    background-color: transparent;
+    padding: 5px 12px;
+    border-radius: 6px;
+    margin-bottom: 30px;
+}
+
+.button-name:hover {
+    background-color: #2e0ead;
+    color: #fff;
+}
+
+.form-group p {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 20px 0px;
+}
+
+.box {
+    display: flex;
+}

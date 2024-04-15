@@ -1,0 +1,89 @@
+#sdr-data .sdr-field {
+    display: flex;
+}
+
+#sdr-data {
+    width: 100%;
+    float: left;
+    display: flex;
+    align-items: left;
+    align-items: center;
+    justify-content: center;
+}
+
+.sdr-field {
+    margin-bottom: 10px;
+}
+
+.sdr-data-body {
+    width: 80%;
+    float: left;
+}
+
+.sdr-field label {
+    width: 30%;
+    float: left;
+}
+
+.sdr-field input {
+    width: 30%;
+    float: left;
+}
+
+.nav-alignment {
+    width: 20%;
+    float: left;
+}
+
+.accordion {
+    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+    /* margin: 12px; */
+    padding-bottom: 10px;
+    margin-top: 10px;
+    align-items: center;
+    padding: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+
+.title {
+    margin-bottom: 0px;
+    padding: 12px;
+}
+
+.content {
+    padding: 12px;
+}
+
+.content-container {
+    overflow: hidden;
+    max-height: 0;
+}
+
+.content-container.opened {
+    max-height: none;
+}
+
+
+.accordion:after {
+    content: '\02795';
+    /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+    position: absolute;
+    right: 15px;
+    top: 26px;
+}
+
+.active:after {
+    content: "\2796";
+    /* Unicode character for "minus" sign (-) */
+    padding-bottom: 5px;
+}
+
+.content-container.opened {
+    padding: 10px;
+}

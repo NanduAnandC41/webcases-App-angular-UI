@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BackendConnectionService } from '../../services/backend-connection.service';
 import { DataRequestService } from '../../services/data-request.service';
@@ -10,7 +10,7 @@ import { DataRequestService } from '../../services/data-request.service';
   templateUrl: './list-of-cyber-bully-data.component.html',
   styleUrls: ['./list-of-cyber-bully-data.component.css']
 })
-export class ListOfCyberBullyDataComponent {
+export class ListOfCyberBullyDataComponent implements OnInit, AfterViewInit{
 
   dtOptions: DataTables.Settings = {};
   posts: any;
@@ -21,13 +21,14 @@ export class ListOfCyberBullyDataComponent {
     private route: ActivatedRoute,
     private router: Router){
 
-    this.backendConnectionService.getListOfCyberBullyData().subscribe(res => {
-      if(res && res.success){
-        this.items = res.data;
+    // this.backendConnectionService.getListOfCyberBullyData().subscribe(res => {
+    //   if(res && res.success){
+    //     this.items = res.data;
 
-      }
-    });
-
+    //   }
+    // },
+    // err => console.error(err),
+    // () => console.log('Done Loading Cyber Bully Data'));
   }
 
 
@@ -38,8 +39,22 @@ export class ListOfCyberBullyDataComponent {
       processing: true,
 
     };
+
+
+    this.backendConnectionService.getListOfCyberBullyData().subscribe(res => {
+      if(res && res.success){
+        this.items = res.data;
+
+      }
+    },
+    err => console.error(err),
+    () => console.log('Done Loading Cyber Bully Data'));
   }
 
+
+  ngAfterViewInit(): void {
+
+  }
 
   redirectToCyberBullyData(mobileNo: string){
     console.log(mobileNo);

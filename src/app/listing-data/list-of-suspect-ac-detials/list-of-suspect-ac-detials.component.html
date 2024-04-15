@@ -1,1 +1,50 @@
-<p>list-of-suspect-ac-detials works!</p>
+<div id="list-suspect-acnt-data">
+
+  <div class="nav-alignment">
+    <app-nav-bar></app-nav-bar>
+  </div>
+
+
+  <div class="card m-3">
+
+    <div class="card-container card-body">
+      <h1 class="mb-5">List Of Suspect Account Data</h1>
+
+      <table id="cdrDataTable" datatable [dtOptions]="dtOptions"
+      class="row-border hover table table-striped table-sm">
+          <thead>
+              <tr>
+                  <th>Suspect Phone No</th>
+                  <th>Suspect Name</th>
+                  <th>Suspect Account No</th>
+                  <th>Station Name</th>
+                  <th>Remarks</th>
+
+              </tr>
+          </thead>
+
+          <tbody>
+              <tr *ngFor="let val of items">
+                  <td (click)="redirectToCdrData(val.suspect_phone_no)">{{ val.suspect_phone_no }}</td>
+
+                  <td>{{ val.suspect_name }}</td>
+
+                  <td>{{ val.suspect_acnt_no }}</td>
+
+                  <td>{{ val.station_name }}</td>
+
+                  <td>{{ val.suspect_remarks }}</td>
+
+              </tr>
+          </tbody>
+      </table>
+    </div>
+
+  </div>
+
+
+
+</div>
+
+
+

@@ -27,11 +27,12 @@
             <div style="display: flex;
             flex-flow: row;
             align-content: flex-start;">
-              <label for="stationName" style="margin-left: 5px;">Station Name </label>
+              <label for="stationName" >Station Name </label>
               <select formControlName="stationName" class="form-control"
-              style="width: 45%;
+              style="width: 30%;
               padding-left: 43px;
-              margin-left: 32px;"
+              margin-left: 2px;
+              margin-bottom: 20px;"
               (change)="filterStationNames($event)">
                 <!-- <option value="0">All</option> -->
                 <option *ngFor="let name of stationNames"
@@ -44,11 +45,12 @@
             <div style="display: flex;
             flex-flow: row;
             align-content: flex-start;">
-              <label for="permission" style="margin-left: 5px;">Access Permission </label>
+              <label for="permission">Access Permission </label>
               <select formControlName="permission" class="form-control"
-              style="width: 45%;
+              style="width: 30%;
               padding-left: 43px;
-              margin-left: 32px;">
+              margin-left: 2px;
+              margin-bottom: 20px;">
                 <option>Select</option>
                 <option value="true">Yes</option>
                 <option value="false">No</option>
@@ -60,11 +62,12 @@
             <div style="display: flex;
             flex-flow: row;
             align-content: flex-start;">
-              <label for="selectedRole" style="margin-left: 5px;">Role</label>
+              <label for="selectedRole">Role</label>
               <select formControlName="selectedRole" class="form-control"
-              style="width: 45%;
+              style="width: 30%;
               padding-left: 43px;
-              margin-left: 32px;">
+              margin-left: 2px;
+              margin-bottom:20px;">
                 <option>Select Value</option>
                 <option *ngFor="let role of roles"
                 [value] = "role.id"
@@ -75,13 +78,13 @@
             <div style="display: flex;
             flex-flow: row;
             align-content: flex-start;">
-              <label for="screenName" style="margin-left: 5px;">Screen Name</label>
+              <label for="screenName">Screen Name</label>
               <select formControlName="screenName" class="form-control"
-              style="width: 45%;
+              style="width: 30%;
               padding-left: 43px;
-              margin-left: 32px;"
-              (change)="filterScreenNames($event)"
-              multiple="multiple">
+              margin-left: 2px;
+              margin-bottom:20px;"
+              (change)="filterScreenNames($event)">
                 <option value="0">All</option>
                 <option *ngFor="let web of screenNames"
                 [value] = "web.id"

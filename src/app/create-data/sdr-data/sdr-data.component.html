@@ -1,1 +1,273 @@
-<p>sdr-data works!</p>
+<div id="sdr-data">
+
+    <div class="nav-alignment">
+        <app-nav-bar></app-nav-bar>
+    </div>
+
+    <div class="sdr-data-body">
+
+        <div class="box" style="margin-top: 15px;">
+            <div style="float: left; width: 45%;">
+                <button style="margin:3px" role="button" class="button-name" [disabled]="newDataButton"
+                    (click)="addSdrDetails()">New Data</button>
+            </div>
+            <div style="float: right; width: 50%;">
+                <button style="margin:3px" role="button" class="button-name" [disabled]="updateDataButton"
+                    (click)="updateSdrSearchValue()">Modify</button>
+                <button style="margin:3px" role="button" class="button-name" [disabled]="bulkDataButton"
+                    (click)="bulkUploadOfSdrData()">Bulk Upload</button>
+            </div>
+        </div>
+
+
+
+        <div style="margin-top: 20px;">
+
+            <form [formGroup]="sdrDataForm" accept-charset="utf-8" enctype="multipart/form-data">
+
+                <div class='form-group'>
+
+
+                    <div style="margin-top: 10px;">
+
+                        <!-- <div class="sdr-field">
+                  <label for="uploadFile">Upload </label>
+
+                  <input class="form-control" formControlName="uploadFile" type="file" name="uploadFile"
+                   (change)="onChangeFileBulkUpload($event)">
+                </div> -->
+
+
+
+                        <div class="sdr-field">
+                            <label for="serialNo">ID/SNO</label>
+                            <input class="form-control" formControlName="serialNo" placeholder="Enter ID/SNO">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="telephoneNo">Telephone Number </label>
+                            <input class="form-control" formControlName="telephoneNo"
+                                placeholder="Enter Telephone Number">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="alternatePhNo">Alternate phone number</label>
+                            <input class="form-control" formControlName="alternatePhNo"
+                                placeholder="Enter alternate phone number">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="subscriberName">Name of Subscriber</label>
+                            <input class="form-control" formControlName="subscriberName"
+                                placeholder="Enter nmae of Subscriber">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="dateOfBirth">Date of Birth</label>
+                            <input class="form-control" formControlName="dateOfBirth" placeholder="Enter DOB">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="guardianName">Father/Husband Name</label>
+                            <input class="form-control" formControlName="guardianName"
+                                placeholder="Enter father/husband name">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="localAddress">Local Address</label>
+                            <input class="form-control" formControlName="localAddress"
+                                placeholder="Enter Local Address">
+                        </div>
+
+                        <div class="sdr-field">
+                            <label for="permanentAddress">Permanent Address</label>
+                            <input class="form-control" formControlName="permanentAddress"
+                                placeholder="Enter Permanent Address">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="emailId">EmailId</label>
+                            <input class="form-control" formControlName="emailId" placeholder="Enter email">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="gender">Gender</label>
+                            <input class="form-control" formControlName="gender" placeholder="Enter Gender">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="nationality">Nationality</label>
+                            <input class="form-control" formControlName="nationality" placeholder="Enter Nationality">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="subscriberProfession">Profession of Subscriber</label>
+                            <input class="form-control" formControlName="subscriberProfession"
+                                placeholder="Enter Profession of Subscriber">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="panGirNo">PAN GIR No</label>
+                            <input class="form-control" formControlName="panGirNo" placeholder="Enter PAN  GIR No">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="photoIdProof">Photo ID Proof Details</label>
+                            <input class="form-control" formControlName="photoIdProof"
+                                placeholder="Enter Photo ID Proof">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="cafSerialNo">Caf Serial Number</label>
+                            <input class="form-control" formControlName="cafSerialNo"
+                                placeholder="Enter Caf serial Number">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="longitude">ID Proof Details</label>
+                            <input class="form-control" formControlName="idProofDetails"
+                                placeholder="Enter ID Proof Details">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="subscriberStatus">Status of Subscriber</label>
+                            <input class="form-control" formControlName="subscriberStatus"
+                                placeholder="Enter status of subscriber">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="connectionType">Connection Type</label>
+                            <input class="form-control" formControlName="connectionType"
+                                placeholder="Enter Connection Type">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="localReference">Local Reference</label>
+                            <input class="form-control" formControlName="localReference"
+                                placeholder="Enter local reference">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="mobileNoCustomerSig">Mobile Number for Customer Signature</label>
+                            <input class="form-control" formControlName="mobileNoCustomerSig"
+                                placeholder="Enter mobile number">
+                        </div>
+
+                        <div class="sdr-field">
+                            <label for="latitude">Latitude</label>
+                            <input class="form-control" formControlName="latitude" placeholder="Enter Latitude">
+                        </div>
+
+                        <div class="sdr-field">
+                            <label for="longitude">Longitude</label>
+                            <input class="form-control" formControlName="longitude" placeholder="Enter Longitude">
+                        </div>
+
+                        <div class="sdr-field">
+                            <label for="imsiNo">IMSI NO</label>
+                            <input class="form-control" formControlName="imsiNo" placeholder="Enter IMSI No">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="serviceProvider">Service Provider</label>
+                            <input class="form-control" formControlName="serviceProvider"
+                                placeholder="Enter Service Provider">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="connectionStatus">Current Status of Connection</label>
+                            <input class="form-control" formControlName="connectionStatus"
+                                placeholder="Enter Curent Status of Connection">
+                        </div>
+
+                        <div class="sdr-field">
+                            <label for="prevServiceProvider">Previous Service Provider</label>
+                            <input class="form-control" formControlName="prevServiceProvider"
+                                placeholder="Enter Previous Service Provider">
+                        </div>
+                        <div class="sdr-field">
+                            <label for="previousCircle">Previous Circle</label>
+                            <input class="form-control" formControlName="previousCircle"
+                                placeholder="Enter Previous Circle">
+                        </div>
+                    </div>
+
+                    <!-- <div class="sdr-field">
+                  <label for="pointSaleCode">Point of Sale Code</label>
+                  <input class="form-control" formControlName="pointSaleCode"  placeholder="Enter Point of Sale Code">
+              </div> -->
+                </div>
+                <!--
+              <div class="sdr-field">
+                  <label for="longitude">Name of Point of sale</label>
+                  <input class="form-control" formControlName="remarks"  placeholder="Enter Name of Point of sale">
+              </div>
+              <div class="sdr-field">
+                  <label for="longitude">Point of sale agent name</label>
+                  <input class="form-control" formControlName="stationame"  placeholder="Enter point of sale agent name">
+              </div>
+              <div class="sdr-field">
+                  <label for="longitude">Point of sale address</label>
+                  <input class="form-control" formControlName="stationame"  placeholder="Enter sale address">
+              </div>
+              <div class="sdr-field">
+                  <label for="longitude">POS Signature</label>
+                  <input class="form-control" formControlName="stationame"  placeholder="Enter POS Signature">
+              </div>
+              <div class="sdr-field">
+                  <label for="longitude">Name Designation of Activation</label>
+                  <input class="form-control" formControlName="stationame"  placeholder="Enter designation of activation">
+              </div> -->
+
+                <div class="sdr-field">
+                    <label for="simActiveDateTime">SIM Activation Date & Time</label>
+                    <input class="form-control" formControlName="simActiveDateTime" type="datetime-local"
+                        placeholder="Enter SIM Activation Date">
+                </div>
+                <!-- <div class="sdr-field">
+                  <label for="longitude">SIM Activation Time</label>
+                  <input class="form-control" formControlName="stationame"  placeholder="Enter Activation Time">
+              </div> -->
+                <div class="sdr-field">
+                    <label for="transactionId">Transaction ID</label>
+                    <input class="form-control" formControlName="transactionId" placeholder="Enter Transaction ID">
+                </div>
+                <div class="sdr-field">
+                    <label for="customerPhoto">Customer Photogrph Captured</label>
+                    <input class="form-control" formControlName="customerPhoto" type="file"
+                        placeholder="Enter customer photo" (change)="customerPhotoSelected($event)">
+                </div>
+                <div class="sdr-field">
+                    <label for="addOnValue">Details of Add on value Added </label>
+                    <input class="form-control" formControlName="addOnValue" placeholder="Enter details of value added">
+                </div>
+                <div class="sdr-field">
+                    <label for="eKycAuthResponse">E-KYC Authorization Response</label>
+                    <input class="form-control" formControlName="eKycAuthResponse"
+                        placeholder="Enter E-KYC Authorization Response">
+                </div>
+                <div class="sdr-field">
+                    <label for="eKycDeclareResponse">E-KYC Declaration Response</label>
+                    <input class="form-control" formControlName="eKycDeclareResponse"
+                        placeholder="Enter E-KYC Declaration Response">
+                </div>
+                <div class="sdr-field">
+                    <label for="agentAadharNo">Agent Aadhar Number</label>
+                    <input class="form-control" formControlName="agentAadharNo" placeholder="Enter Agent Aadhar Number">
+                </div>
+                <div class="sdr-field">
+                    <label for="postAuthResponse">Post Authentication Response</label>
+                    <input class="form-control" formControlName="postAuthResponse"
+                        placeholder="Enter Post Authentication Response">
+                </div>
+                <div class="sdr-field">
+                    <label for="circle">Circle</label>
+                    <input class="form-control" formControlName="circle" placeholder="Enter Circle">
+                </div>
+                <div class="sdr-field">
+                    <label for="entryDate">Entry Date</label>
+                    <input class="form-control" formControlName="entryDate" type="date"
+                        placeholder="Enter Database Entry name">
+                </div>
+                <div style="display: flex;
+                flex-flow: row;
+                align-content: flex-start;" class="sdr-field">
+                    <label for="policeStation">Station Name </label>
+                    <select formControlName="policeStation" class="form-control" style="width: 30%;
+                  padding-left: 43px;">
+                        <option *ngFor="let name of stationNames" [value]=name.stationId>{{name.stationName}}</option>
+                    </select>
+
+                </div>
+
+                <div>
+                    <button style="margin-top: 20px;
+                  float: left;" role="button" class="button-name">
+                        Submit</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>

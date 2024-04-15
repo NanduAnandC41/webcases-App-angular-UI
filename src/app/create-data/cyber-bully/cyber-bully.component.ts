@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule  } from "@angular/forms";
 import { BackendConnectionService } from '../../services/backend-connection.service';
-import { CyberBullyDataDTO } from  '../../models/state.constants';
+import { CdrDataDTO, StationNamesDTO, CyberBullyDataDTO } from '../../models/state.constants';
 import { DataRequestService } from '../../services/data-request.service';
 
 
@@ -19,9 +19,18 @@ export class CyberBullyComponent implements OnInit{
   updateDataButton: boolean = true;
   bulkDataButton: boolean = true;
 
+  stationNames: StationNamesDTO[] = [];
+
   constructor(protected formBuilder: FormBuilder,
     private backendConnectionService: BackendConnectionService,
     private dataRequestService: DataRequestService) {
+
+      this.backendConnectionService.getListOfStationNames().subscribe(res => {
+        if(res && res.success){
+          console.log(res);
+          this.stationNames = res.data;
+        }
+      });
 
       this.dataRequestService.valueTransfer.subscribe(res => {
         if(res){

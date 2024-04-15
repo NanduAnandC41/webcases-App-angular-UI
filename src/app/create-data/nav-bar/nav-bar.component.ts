@@ -30,72 +30,72 @@ export class NavBarComponent implements OnInit {
 
     this.cardsData = [
       {
-        id: 0,
+        id: 1,
         name: "CDR's Data",
         screen_link_name: 'create-cases/cdr-data'
       },
       {
-        id: 0,
+        id: 2,
         name: "Cyber Bully",
         screen_link_name: 'create-cases/cyber-bully-data'
       },
       {
-        id: 0,
+        id: 3,
         name: "Suspect Data",
         screen_link_name: 'create-cases/suspect-data'
       },
       {
-        id: 0,
+        id: 4,
         name: "SDR Data",
         screen_link_name: 'create-cases/sdr-data'
       },
       {
-        id: 0,
+        id: 5,
         name: "CAF Forms",
         screen_link_name: 'create-cases/caf-forms-data'
       },
       {
-        id: 0,
+        id: 6,
         name: "NCRP",
         screen_link_name: 'create-cases/ncrp-data'
       },
       {
-        id: 0,
+        id: 7,
         name: "Suspect Acccount Details",
         screen_link_name: 'create-cases/suspect-acc-data'
       },
       {
-        id: 0,
+        id: 8,
         name: "List Of CDR Data",
         screen_link_name: 'list-cases/list-of-cdr-data'
       },
       {
-        id: 0,
+        id: 9,
         name: "List Of Suspect Data",
         screen_link_name: 'list-cases/list-of-suspect-data'
       },
       {
-        id: 0,
+        id: 10,
         name: "List Of Suspect Account Details",
         screen_link_name: 'list-cases/list-of-suspect-ac-detials'
       },
       {
-        id: 0,
+        id: 11,
         name: "List Of SDR Data",
         screen_link_name: 'list-cases/list-of-sdr-data'
       },
       {
-        id: 0,
+        id: 12,
         name: "List Of NCRP Data",
         screen_link_name: 'list-cases/list-of-ncrp-data'
       },
       {
-        id: 0,
+        id: 13,
         name: "List Of Cyber Bully",
         screen_link_name: 'list-cases/list-of-cyber-bully-data'
       },
       {
-        id: 0,
+        id: 14,
         name: "List Of CAF Form",
         screen_link_name: 'list-cases/list-of-caf-forms-data'
       },

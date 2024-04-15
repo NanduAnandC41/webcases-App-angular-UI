@@ -1,0 +1,31 @@
+#caf-data .sdr-field{
+    display: flex;
+    }
+    #caf-data{
+        width: 100%;
+        float: left;
+        display: flex;
+        align-items: left;
+        align-items: center;
+        justify-content: center;
+      }
+    .sdr-field{
+        margin-bottom: 10px;
+    }
+    .sdr-data-body{
+        width: 80%;
+        float: left;
+      }
+      
+    .sdr-field label{
+        width: 30%;
+        float: left;
+    }
+    .sdr-field input{
+        width: 30%;
+        float: left;
+    }
+    .nav-alignment{
+        width: 20%;
+        float: left;
+    }
