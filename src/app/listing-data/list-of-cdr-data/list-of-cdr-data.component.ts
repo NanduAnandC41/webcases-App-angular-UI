@@ -31,6 +31,8 @@ export class ListOfCdrDataComponent implements OnInit, AfterViewInit{
       // err => console.error(err),
       // () => console.log('Done Loading CDR Data'));
 
+      // this.loadCdrData();
+
   }
 
 
@@ -44,20 +46,23 @@ export class ListOfCdrDataComponent implements OnInit, AfterViewInit{
 
     };
 
-    this.backendConnectionService.getListOfCdrData().subscribe(res => {
-      if(res && res.success){
-        this.items = res.data;
-
-      }
-    },
-    err => console.error(err),
-    () => console.log('Done Loading CDR Data'));
+    // this.loadCdrData();
 
 
 
   }
 
   ngAfterViewInit(): void {
+    this.loadCdrData();
+  }
+
+  loadCdrData(){
+
+    this.dataRequestService.listOfCdrDat.subscribe( (res) => {
+      if(res){
+        this.items = res;
+      }
+    });
 
   }
 

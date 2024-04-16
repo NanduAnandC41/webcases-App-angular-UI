@@ -1,7 +1,7 @@
 
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Observable, audit, catchError, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, audit, catchError, throwError } from 'rxjs';
 import { ScreenPages , CdrDataDTO, CyberBullyDataDTO, SuspectDataDTO, SdrDataDTO, CafFormDataDTO, NcrpDataDTO, SuspectAccountDTO} from '../models/state.constants';
 import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 
