@@ -13,9 +13,9 @@ export class AppComponent {
   private roles: string[] = [];
   isLoggedIn = false;
   showAdminBoard = false;
-  showModeratorBoard = false;
-  username?: string;
+  showUserBoard = false;
 
+  username?: string;
   eventBusSub?: Subscription;
 
   constructor(
@@ -29,12 +29,15 @@ export class AppComponent {
 
     if (this.isLoggedIn) {
       const user = this.storageService.getUser();
-      this.roles = user.roles;
+      let strRoles = []
+      strRoles.push(user.user_role);
+      this.roles = strRoles;
 
       this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
+      this.showUserBoard = this.roles.includes('ROLE_USER');
+      // this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
 
-      this.username = user.username;
+      this.username = user.user_name;
     }
 
     this.eventBusSub = this.eventBusService.on('logout', () => {

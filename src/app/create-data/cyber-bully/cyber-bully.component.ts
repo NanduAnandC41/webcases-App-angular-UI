@@ -197,9 +197,9 @@ export class CyberBullyComponent implements OnInit{
         } else if(res && !res.success){
           alert(res.data);
         }
-      },err => {
+      }, err => {
         if(err){
-          alert("Facing Some Issue while submitting data, please check later");
+          alert(err);
         }
       });
 

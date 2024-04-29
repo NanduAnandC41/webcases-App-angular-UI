@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { UserCreationDTO } from '../models/state.constants';
 import { catchError, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -10,13 +10,16 @@ const AUTH_API = 'http://localhost:4202/auth/';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json',
   'Accept': 'application/json',
-  'Access-Control-Allow-Headers': 'Content-Type', })
+  'Access-Control-Allow-Headers': 'Content-Type',})
 };
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+
+
+
   constructor(private http: HttpClient) {}
 
   login(username: string, password: string): Observable<any> {
@@ -26,7 +29,8 @@ export class AuthService {
       password: password
     }
 
-    return this.http.post(AUTH_API + 'login',JSON.stringify(postObj),httpOptions).pipe(catchError(this.handleError));
+    return this.http.post(AUTH_API + 'login',JSON.stringify(postObj),httpOptions)
+    .pipe(catchError(this.handleError));
   }
 
   register(postObj: UserCreationDTO): Observable<any> {
@@ -35,8 +39,14 @@ export class AuthService {
       httpOptions).pipe(catchError(this.handleError));
   }
 
+  userdata(username: string): Observable<any>{
+    return this.http.get(AUTH_API + `userName/${username}/` + `user-data`, httpOptions)
+    .pipe(catchError(this.handleError));
+  }
+
   logout(): Observable<any> {
-    return this.http.post(AUTH_API + 'signout', { }, httpOptions);
+    return this.http.post(AUTH_API + 'signout', { }, httpOptions)
+    .pipe(catchError(this.handleError));
   }
 
   private handleError(httpError: HttpErrorResponse) {

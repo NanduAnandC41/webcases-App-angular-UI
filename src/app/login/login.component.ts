@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../_services/auth.service';
 import { StorageService } from '../_services/storage.service';
+import { DataRequestService } from '../services/data-request.service';
 
 @Component({
   selector: 'app-login',
@@ -18,12 +19,15 @@ export class LoginComponent implements OnInit, AfterViewInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
+  private userdata: any = null;
+  private userDetails: any = null;
 
   constructor(private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private elementRef: ElementRef,
-    private authService: AuthService, private storageService: StorageService) { }
+    private authService: AuthService, private storageService: StorageService,
+    private dataRequestService: DataRequestService) { }
 
   ngOnInit(): void {
     if (this.storageService.isLoggedIn()) {
@@ -81,18 +85,28 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
     this.authService.login(this.loginForm.value.username,
       this.loginForm.value.password).subscribe(res => {
-        console.log(res);
-      this.storageService.saveToken(res.accessToken);
-      this.storageService.saveUser(res);
+        if(res){
+
+          console.log(res);
+          this.userdata = res;
+          this.storageService.saveToken(res.jwtToken);
+          this.storageService.saveUser(res);
+
+        }
 
       this.isLoginFailed = false;
       this.isLoggedIn = true;
-      this.roles = this.storageService.getUser().roles;
-      this.reloadPage();
+      this.userDetails = this.storageService.getUser();
+      let strRoles = [];
+      strRoles.push(this.userDetails.user_role);
+      this.roles = strRoles;
+      // this.reloadPage();
       this.router.navigateByUrl('/dashboard');
+
     },
     err => {
       this.errorMessage = err.error.message;
+      console.log(err);
       this.isLoginFailed = true;
     });
 
@@ -105,4 +119,9 @@ export class LoginComponent implements OnInit, AfterViewInit {
   createUser(): void{
     this.router.navigateByUrl("/register");
   }
+
+
+
+
+
 }

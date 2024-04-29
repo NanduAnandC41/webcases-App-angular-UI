@@ -52,8 +52,19 @@ export class BackendConnectionService {
   private listOfSuspectAccntDataMapName = "listOfSuspectAccountData";
 
 
+  private _ListOfCdrData = new BehaviorSubject<any[]>([]);
+  listOfCdrData: Observable<any[]> = this._ListOfCdrData.asObservable();
 
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient) {
+
+    this.getListOfCdrData().subscribe(res => {
+      if(res){
+        this._ListOfCdrData.next(res.data);
+      }
+    });
+
+  }
 
   getListOfStationNames(): Observable<any>{
     const apiUrl =  `${AUTH_API + this.listOfStationsMapName}`;
@@ -75,7 +86,7 @@ export class BackendConnectionService {
 
   getListOfCdrData(): Observable<any>{
     const apiUrl =  `${AUTH_API + this.listOfcdrDataMapName}`;
-    return this.http.get<any>(apiUrl , httpOptions).pipe(catchError(this.handleError));
+    return this.http.get<any>(apiUrl , httpOptions);
   }
 
   submitCdrExcelDataUpload(file: any): Observable<any>{

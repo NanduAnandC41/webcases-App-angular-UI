@@ -193,7 +193,7 @@ export class CdrDataComponent implements OnInit{
         }
       }, err => {
         if(err){
-          alert("Facing Some Issue while submitting data, please check later");
+          alert(err);
         }
       });
 

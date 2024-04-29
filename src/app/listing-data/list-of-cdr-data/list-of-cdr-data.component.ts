@@ -33,11 +33,14 @@ export class ListOfCdrDataComponent implements OnInit, AfterViewInit{
 
       // this.loadCdrData();
 
+      // this.loadCdrData();
+
   }
 
 
   ngOnInit(): void {
 
+    this.loadCdrData();
 
     this.dtOptions = {
       pagingType: 'full_numbers',
@@ -46,19 +49,17 @@ export class ListOfCdrDataComponent implements OnInit, AfterViewInit{
 
     };
 
-    // this.loadCdrData();
-
-
 
   }
 
   ngAfterViewInit(): void {
     this.loadCdrData();
+
   }
 
   loadCdrData(){
 
-    this.dataRequestService.listOfCdrDat.subscribe( (res) => {
+    this.backendConnectionService.listOfCdrData.subscribe(res => {
       if(res){
         this.items = res;
       }

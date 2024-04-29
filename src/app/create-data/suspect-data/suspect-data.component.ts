@@ -213,11 +213,28 @@ export class SuspectDataComponent implements OnInit{
         remarks: this.suspectDataForm.value.remarks,
       }
 
+      this.backendConnectionService.submitSuspectData(submitObj).subscribe(res => {
+        if(res && res.success){
+          alert(res.data);
+          this.suspectDataForm.reset();
+        } else if(res && !res.success){
+          alert(res.data);
+        }
+      },err => {
+        if(err){
+          alert("Facing Some Issue while submitting data, please check later");
+        }
+      });
+
+
 
     }
 
 
 
   }
+
+
+
 
 }

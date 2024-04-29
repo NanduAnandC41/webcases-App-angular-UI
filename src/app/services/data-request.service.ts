@@ -7,32 +7,37 @@ import { BackendConnectionService } from './backend-connection.service';
 })
 export class DataRequestService {
 
+
+
   private _valueTransfer = new BehaviorSubject<string>('');
   valueTransfer: Observable<string> = this._valueTransfer.asObservable();
   dataValue: string = '';
 
 
-  private _ListOfCdrData = new BehaviorSubject<any[]>([]);
-  listOfCdrDat: Observable<any[]> = this._ListOfCdrData.asObservable();
+  // private _ListOfCdrData = new BehaviorSubject<any[]>([]);
+  // listOfCdrDat: Observable<any[]> = this._ListOfCdrData.asObservable();
 
 
 
   constructor(private backendConnectionService: BackendConnectionService) {
 
 
-    this.backendConnectionService.getListOfCdrData().subscribe(res => {
-      let listOfCdrData = [];
-      console.log(res);
-      if(res & res.success){
-        listOfCdrData = res.data;
-      }
+    // this.backendConnectionService.getListOfCdrData().subscribe(res => {
+    //   let listOfCdrData = [];
+    //   console.log(res);
+    //   if(res & res.success){
+    //     listOfCdrData = res.data;
+    //   }
 
-      this._ListOfCdrData.next(listOfCdrData);
+    //   this._ListOfCdrData.next(listOfCdrData);
 
-    });
+    // });
 
 
   }
+
+
+
 
 
 
@@ -40,8 +45,6 @@ export class DataRequestService {
   valueAppendToTransfer(value: string){
     this._valueTransfer.next(value)
   }
-
-
 
 
 
